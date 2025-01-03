@@ -24,6 +24,7 @@ require("connection.php");
     <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
+
 <div class="wrapper">
         <div class="logo">
             <img src="adminimages/om.jpg" alt="">
