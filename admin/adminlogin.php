@@ -73,7 +73,7 @@ function input_filter($data)
     {
         session_start();
         $_SESSION['adminloginid']=$adminname;
-        header("location:adminpanel.php");
+        header("location:home.php");
     }else{
         echo"<script>alert('Incorrect password');</script>";
     }
