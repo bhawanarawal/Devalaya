@@ -1,0 +1,1 @@
+ALTER TABLE `gallery` ADD CONSTRAINT `fk_temple_id_gallery` FOREIGN KEY (`temple_id`) REFERENCES `temple`(`id`);
