@@ -1,6 +1,19 @@
-<?php session_start(); ?>
-<?php
+<?php 
+session_start();
 include('connection.php');
+$data=[];
+  $sql="select * from temple where id='{$_GET["id"]}'";
+  $res=$con->query($sql);
+  if($res->num_rows>0){
+    $row=$res->fetch_assoc();
+}
+
+
+
+
+?>
+<?php
+
 
 
 if (isset($_POST["add_temple"])) {
@@ -9,9 +22,9 @@ if (isset($_POST["add_temple"])) {
     $deity = $_POST["templedeity"];
     $address = $_POST["templeaddress"];
     $madeyear = $_POST["templemadeyear"];
+    $query= "UPDATE temple SET name= '$name', details= '$detail', address='$address', deity='$deity',made_year='$madeyear' WHERE id={$_GET["id"]}";
+    mysqli_query($con,$query) ;
 
-    mysqli_query($con, "INSERT INTO temple (name, details, address, deity, made_year) VALUES ('$name', '$detail',' $address','$deity','$madeyear')");
-    $temple_id = mysqli_insert_id($con);
 
     $uploadDirectory = "./temple_gallery/";
     foreach ($_FILES['templeimages']['tmp_name'] as $key => $value) {
@@ -24,7 +37,7 @@ if (isset($_POST["add_temple"])) {
         $filepath = $uploadDirectory . $file_name;
 
         move_uploaded_file($file_tmpname, $filepath);
-        $sql = "insert into gallery(image_path,temple_id) values ('$filepath',$temple_id)";
+        $sql = "insert into gallery(image_path,temple_id) values ('$filepath',{$_GET["id"]})";
         mysqli_query($con, $sql);
     }
 }
@@ -48,35 +61,37 @@ if (isset($_POST["add_temple"])) {
                             <div class="form-group row">
                                 <label class="col-md-4 col-form-label text-md-right">Temple Name</label>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="templename" required autofocus>
+                                    <input type="text" value="<?php echo $row["name"];?>" class="form-control" name="templename" required autofocus>
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label class="col-md-4 col-form-label text-md-right">Details</label>
                                 <div class="col-md-6">
-                                    <textarea rows="10" class="form-control" name="templedetails"></textarea>
+                                    <textarea rows="10"  class="form-control" name="templedetails">
+                                        <?php echo $row["details"];?>
+                                    </textarea>
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label class="col-md-4 col-form-label text-md-right">Deity</label>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="templedeity" required>
+                                    <input type="text" value="<?php echo $row["deity"];?>" class="form-control" name="templedeity" required>
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label class="col-md-4 col-form-label text-md-right">Address</label>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="templeaddress" required>
+                                    <input type="text" value="<?php echo $row["address"];?>" class="form-control" name="templeaddress" required>
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label class="col-md-4 col-form-label text-md-right">Made Year</label>
                                 <div class="col-md-6">
-                                    <input type="date" class="form-control" name="templemadeyear">
+                                    <input type="date" value="<?php echo $row["made_year"];?>" class="form-control" name="templemadeyear">
                                 </div>
                             </div>
 
