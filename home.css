@@ -1,32 +1,39 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+  margin:0px;
+  padding:0px;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
 
 
 .navbar{
-    background-color:white;
-    height:80px;
-    margin:20px;
-    border-radius:16px;
-    padding:0.5rem;
+    background-color:rgb(61, 229, 98);
+   padding:10px 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+
 }
+
 
 .navbar-brand{
-    font-weight:500;
-    color:red;
-    font-size:24px;
-    transition:0.3px color;
+  transition:0.3px color;
+  font-size: 35px;
+  color:red;
 }
 
-.log-in-button{
+.login{
     background-color: red;
     color: #fff;
-    font-size: 14px;
+    font-size: 16px;
     padding: 9px 20px;
-    border-radius: 50px;
     text-decoration: none;
     transition: 0.3s background-color;
 }
 
-.log-in-button:hover{
+.login:hover{
     background-color: black;
 }
 

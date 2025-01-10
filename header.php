@@ -10,8 +10,9 @@
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+  
   <link rel="stylesheet" href="<?php echo BASE_URL; ?>home.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 
 <body>
@@ -19,7 +20,7 @@
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
       <a class="navbar-brand me-auto" href="#">
-        <p><img src="images/icon-3.jpg" width="49px"><span>Devalaya</span></p>
+        <span >Devalaya</span>
       </a>
 
       <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
@@ -33,13 +34,13 @@
               <a class="nav-link mx-lg-2 active" aria-current="page" href="#">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link mx-lg-2" href="#">About</a>
+              <a class="nav-link mx-lg-2" href="about.php">About Us</a>
             </li>
             <li class="nav-item">
               <a class="nav-link mx-lg-2" href="#">Contact</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link mx-lg-2" href="#">Location</a>
+              <a class="nav-link mx-lg-2" href="#">Gallery</a>
             </li>
             <li class="nav-item">
               <a class="nav-link mx-lg-2" href="#">Events</a>
@@ -47,9 +48,12 @@
           </ul>
         </div>
       </div>
-      <a href="#" class="log-in-button">Login</a>
+      <a href="#" class="login">Login</a>
       <button class="navbar-toggler pe-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
     </div>
   </nav>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js"></script>
+</body>
+</html>

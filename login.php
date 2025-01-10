@@ -1,7 +1,10 @@
-<?php
-require("connection.php");
 
-?>
+
+<!--//require __DIR__ . '/vendor/autoload.php';
+//require("database.php");
+//$auth = new \Delight\Auth\Auth($db);
+-->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,33 +16,29 @@ require("connection.php");
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
 
-    <!-- owl carousel css file cdn link  -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js">
-
     <!-- font awesome cdn link  -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
 
     <!-- custom css file link  -->
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="./admin/css/login.css">
 </head>
 <body>
 
 <div class="wrapper">
         <div class="logo">
-            <img src="adminimages/om.jpg" alt="">
+            <img src="./admin/adminimages/om.jpg" alt="">
         </div>
         <div class="text-center mt-4 name">
-            Admin Login
+            Login
         </div>
         <form method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" class="p-3 mt-3">
             <div class="form-field d-flex align-items-center">
                 <span class="fas fa-user"></span>
-                <input type="text" name="adminname" placeholder="Admin Name">
+                <input type="text" name="email" placeholder="Enter Your Email">
             </div>
             <div class="form-field d-flex align-items-center">
                 <span class="fas fa-key"></span>
-                <input type="password" name="adminpassword"  placeholder="Password">
+                <input type="password" name="password"  placeholder="Enter Your Password">
             </div>
             <button class="btn mt-3" type="submit" name="login" >Login</button>
         </form>
@@ -84,6 +83,9 @@ function input_filter($data)
  }
 }
  ?>
+
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
