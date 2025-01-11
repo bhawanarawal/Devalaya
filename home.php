@@ -7,9 +7,9 @@
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="images/home-3.webp"  alt="...">
+      <img src="images/home-17.jpg"  alt="...">
       <div class="carousel-caption ">
-        <h1>Bhagavad Gita</h1>
+        <h1 ><b>BHAGAVAD GITA :</b></h1>
         <h4>“Believe me ! I am the only truth”</h4>
       </div>
     </div>
@@ -17,8 +17,8 @@
     <div class="carousel-item">
       <img src="images/home-4.webp"  alt="...">
       <div class="carousel-caption">
-        <h1 class="animated fadeInLeft">Bhagavad Gita</h1>
-        <h4 class="animated fadeInUp">“You are only entitled to the action, never to its fruits.”</h4>
+        <h1 ><b>BHAGAVAD GITA :</b></h1>
+        <h4>“You are only entitled to the action, never to its fruits.”</h4>
       </div>
     </div>
   </div>

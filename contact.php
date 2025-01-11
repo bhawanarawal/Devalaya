@@ -1,4 +1,4 @@
-<?php require_once 'header.php'; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,12 +8,10 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
 <link rel="stylesheet" href="css/contact.css">
-<link rel='stylesheet' href='https://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
 
 </head>
 <body>
-    
-
+<?php require_once 'header.php'; ?>
 
 <div class="container bootstrap snippets bootdeys">
       <div class="row text-center">
@@ -21,8 +19,8 @@
           <div class="contact-detail-box">
             <i class="fa fa-th fa-3x text-colored"></i>
             <h4>Get In Touch</h4>
-            <abbr title="Phone">P:</abbr> (123) 456-7890<br>
-            E: <a href="mailto:email@email.com" class="text-muted">email@email.com</a>
+            <abbr title="Phone">P:</abbr>123456789<br>
+            E:<a href="mailto:email@email.com" class="text-muted">email@email.com</a>
           </div>
         </div><!-- end col -->
 
@@ -32,8 +30,7 @@
             <h4>Our Location</h4>
 
             <address>
-            795 Folsom Ave, Suite 600<br>
-            San Francisco, CA 94107<br>
+            Kathmandu,Nepal<br>
           </address>
           </div>
         </div><!-- end col -->
@@ -43,8 +40,8 @@
             <i class="fa fa-book fa-3x text-colored"></i>
             <h4>24x7 Support</h4>
 
-            <p>Industry's standard dummy text.</p>
-            <h4 class="text-muted">1234 567 890</h4>
+            <p>Call Us:</p>
+            <p class="text-muted">1234 567 890</p>
           </div>
         </div><!-- end col -->
 
@@ -97,6 +94,6 @@
           
     </div>
 
-    <script src='https://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script>
+    
     </body>
 </html>
