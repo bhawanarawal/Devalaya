@@ -4,13 +4,15 @@
         private $host = 'localhost';
         private $user = 'root';
         private $password = '';
-        private $db_name = 'student';
-        private $connection;
+        private $db_name = 'devalaya_db';
+        private $db;
         public function __construct()
         {
+            
             try{
-                $this->connection = new PDO('mysql:host=localhost;dbname=student', 'root','');
-                $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $this->db = new PDO('mysql:host=localhost;dbname=devalaya_db', 'root','');
+                $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                
             }catch( PDOException $e){
                 die("Fail connection: ".$e->getMessage());
             }
@@ -18,9 +20,14 @@
 
         public function getConnection()
         {
-            return $this->connection;
+            return $this->db;
         }
 
     }
+
+$obj = new Database();
+
+
+   
 
 ?>

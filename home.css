@@ -13,6 +13,7 @@
     display: flex;
     justify-content: space-between;
     position: sticky;
+    border-bottom: 2px solid red;
 
 }
 
@@ -119,6 +120,6 @@
   }
   
   .carousel-inner .carousel-item > img {
-    animation: zoom 20s;
+    animation: zoom 30s;
   }
   

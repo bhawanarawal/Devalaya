@@ -12,6 +12,10 @@
 </head>
 <body>
 <?php require_once 'header.php'; ?>
+<div class="image">
+  <img src="images/image-3.webp">
+  <div class="overlay-text"><b>Contact Us</b></div>
+</div>
 
 <div class="container bootstrap snippets bootdeys">
       <div class="row text-center">
@@ -57,7 +61,7 @@
         </div><!-- end col -->
 
         <!-- Contact form -->
-        <div class="col-sm-6">
+        <div class="col-sm-4">
           <form role="form" name="ajax-form" id="ajax-form" action="" method="post" class="form-main">
 
             <div class="form-group">
