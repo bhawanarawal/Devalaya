@@ -1,45 +1,22 @@
-<?php
-session_start();
+<?php session_start();
 include('connection.php');
 $data = [];
-$sql = "select * from temple where id='{$_GET["id"]}'";
+$sql = "select * from events where id='{$_GET["id"]}'";
 $res = $con->query($sql);
 if ($res->num_rows > 0) {
     $row = $res->fetch_assoc();
 }
-
-
-
-
 ?>
 <?php
+if (isset($_POST["add_events"])) {
+    $name = $_POST["eventname"];
+    $detail = $_POST["eventdetails"];
+    $date = $_POST["eventdate"];
+    $contact = $_POST["contact"];
 
-
-
-if (isset($_POST["add_temple"])) {
-    $name = $_POST["templename"];
-    $detail = $_POST["templedetails"];
-    $deity = $_POST["templedeity"];
-    $address = $_POST["templeaddress"];
-    $madeyear = $_POST["templemadeyear"];
-    $query = "UPDATE temple SET name= '$name', details= '$detail', address='$address', deity='$deity',made_year='$madeyear' WHERE id={$_GET["id"]}";
+    $query = "UPDATE events SET name= '$name', details= '$detail', event_date='$date', contact='$contact' WHERE id={$_GET["id"]}";
     mysqli_query($con, $query);
 
-
-    $uploadDirectory = "./temple_gallery/";
-    foreach ($_FILES['templeimages']['tmp_name'] as $key => $value) {
-
-        $file_tmpname = $_FILES['templeimages']['tmp_name'][$key];
-        $file_name = $_FILES['templeimages']['name'][$key];
-        $time = date("d-m-Y") . "-" . time();
-        $file_name = $time . "-" . $file_name;
-        // Set upload file path
-        $filepath = $uploadDirectory . $file_name;
-
-        move_uploaded_file($file_tmpname, $filepath);
-        $sql = "insert into gallery(image_path,temple_id) values ('$filepath',{$_GET["id"]})";
-        mysqli_query($con, $sql);
-    }
 }
 ?>
 <!DOCTYPE html>
@@ -92,56 +69,44 @@ if (isset($_POST["add_temple"])) {
                     <div class="card shadow mb-4">
 
                         <div class="card-body">
-                            <div class="card-header">Update Temple site Information</div>
+                            <div class="card-header">Update Events Information</div>
                             <div class="card-body">
-                                <form action="#" method="POST" name="add_temple" enctype="multipart/form-data">
+                                <form action="#" method="POST" name="add_events" enctype="multipart/form-data">
 
                                     <div class="form-group row">
-                                        <label class="col-md-4 col-form-label text-md-right">Temple Name</label>
+                                        <label class="col-md-4 col-form-label text-md-right">Event Name</label>
                                         <div class="col-md-6">
-                                            <input type="text" value="<?php echo $row["name"]; ?>" class="form-control" name="templename" required autofocus>
+                                            <input type="text" value="<?php echo $row["name"]; ?>" class="form-control" name="eventname" required autofocus>
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label class="col-md-4 col-form-label text-md-right">Details</label>
                                         <div class="col-md-6">
-                                            <textarea rows="10" class="form-control" name="templedetails">
+                                            <textarea rows="10" class="form-control" name="eventdetails">
                                         <?php echo $row["details"]; ?>
                                     </textarea>
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
-                                        <label class="col-md-4 col-form-label text-md-right">Deity</label>
+                                        <label class="col-md-4 col-form-label text-md-right">Event Date</label>
                                         <div class="col-md-6">
-                                            <input type="text" value="<?php echo $row["deity"]; ?>" class="form-control" name="templedeity" required>
+                                            <input type="date" value="<?php echo $row["event_date"]; ?>" class="form-control" name="eventdate" required>
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
-                                        <label class="col-md-4 col-form-label text-md-right">Address</label>
+                                        <label class="col-md-4 col-form-label text-md-right">Contact</label>
                                         <div class="col-md-6">
-                                            <input type="text" value="<?php echo $row["address"]; ?>" class="form-control" name="templeaddress" required>
+                                            <input type="text" value="<?php echo $row["contact"]; ?>" class="form-control" name="contact" required>
                                         </div>
                                     </div>
 
-                                    <div class="form-group row">
-                                        <label class="col-md-4 col-form-label text-md-right">Made Year</label>
-                                        <div class="col-md-6">
-                                            <input type="date" value="<?php echo $row["made_year"]; ?>" class="form-control" name="templemadeyear">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label class="col-md-4 col-form-label text-md-right">Images</label>
-                                        <div class="col-md-6">
-                                            <input type="file" accept="image/*" multiple class="form-control" name="templeimages[]">
-                                        </div>
-                                    </div>
+                                    
 
                                     <div class="col-md-6 offset-md-4">
-                                        <input type="submit" value="Save" name="add_temple">
+                                        <input type="submit" value="Save" name="add_events">
                                     </div>
                                 </form>
                             </div>

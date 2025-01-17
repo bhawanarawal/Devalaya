@@ -82,7 +82,7 @@
     <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
         data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-            <a class="dropdown-item" href="/devalaya/admin/templesites.php">All Events</a>
+            <a class="dropdown-item" href="/devalaya/admin/allevents.php">All Events</a>
             <a class="dropdown-item" href="/devalaya/admin/addevents.php">New Events</a>
         </div>
     </div>

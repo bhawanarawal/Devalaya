@@ -2,7 +2,7 @@
 session_start();
 include('connection.php');
 $data=[];
-  $sql="select * from temple";
+  $sql="select * from events";
   $res=$con->query($sql);
   if($res->num_rows>0){
     while($row=$res->fetch_assoc()){
@@ -11,8 +11,6 @@ $data=[];
 }
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
 <head>
 
 <meta charset="utf-8">
@@ -54,7 +52,7 @@ $data=[];
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Temples list</h1>
+                    <h1 class="h3 mb-2 text-black-800">Events list</h1>
                     
 
                     <!-- DataTales Example -->
@@ -66,22 +64,20 @@ $data=[];
                                     <thead>
                                     <tr>
                                       <th>SN</th>
-                                      <th>Name</th>
+                                      <th>Event Name</th>
                                       <th>Details</th>
-                                      <th>Address</th>
-                                      <th>Deity</th>
-                                      <th>Construction Year</th>
+                                      <th>Event Date</th>
+                                      <th>Contact</th>
                                       <th colspan="2">Action</th>
                                     </tr>
                                     </thead>
                                     <tfoot>
                                     <tr>
-                                      <th>SN</th>
-                                      <th>Name</th>
+                                    <th>SN</th>
+                                      <th>Event Name</th>
                                       <th>Details</th>
-                                      <th>Address</th>
-                                      <th>Deity</th>
-                                      <th>Construction Year</th>
+                                      <th>Event Date</th>
+                                      <th>Contact</th>
                                       <th colspan="2">Action</th>
                                     </tr>
                                     </tfoot>
@@ -95,10 +91,9 @@ $data=[];
                                       <td><?php echo $i; ?></td>
                                       <td><?php echo $row["name"]; ?></td>
                                       <td><?php echo $row["details"]; ?></td>
-                                      <td><?php echo $row["address"]; ?></td>
-                                      <td><?php echo $row["deity"]; ?></td>
-                                      <td><?php echo $row["made_year"]; ?></td>
-                                      <td><a href='edittemple.php?id=<?php echo $row["id"]; ?>' class='btn-blue'>Edit</a></td>
+                                      <td><?php echo $row["event_date"]; ?></td>
+                                      <td><?php echo $row["contact"]; ?></td>
+                                      <td><a href='editevents.php?id=<?php echo $row["id"]; ?>' class='btn-blue'>Edit</a></td>
                                       <td><a href='delete.php?id=<?php echo $row["id"]; ?>' onclick='return confirm("Are You Sure?")'  class='btn-red'>Delete</a></td>
                                     </tr>
                                     <?php } ?>

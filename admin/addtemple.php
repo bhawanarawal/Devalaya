@@ -28,10 +28,8 @@ if (isset($_POST["add_temple"])) {
         mysqli_query($con, $sql);
     }
 }
-
-
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -75,79 +73,88 @@ if (isset($_POST["add_temple"])) {
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
+                    <!-- Page Heading -->
 
-                    <div class="card">
-                        <div class="card-header">New Temple site Information</div>
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+
                         <div class="card-body">
-                            <form action="#" method="POST" name="add_temple" enctype="multipart/form-data">
+                            <div class="card-header">New Temple site Information</div>
+                            <div class="card-body">
+                                <form action="#" method="POST" name="add_temple" enctype="multipart/form-data">
 
-                                <div class="form-group row">
-                                    <label class="col-md-4 col-form-label text-md-right">Temple Name</label>
-                                    <div class="col-md-6">
-                                        <input type="text" class="form-control" name="templename" required autofocus>
+                                    <div class="form-group row">
+                                        <label class="col-md-4 col-form-label text-md-right">Temple Name</label>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" name="templename" required autofocus>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="form-group row">
-                                    <label class="col-md-4 col-form-label text-md-right">Details</label>
-                                    <div class="col-md-6">
-                                        <textarea rows="10" class="form-control" name="templedetails"></textarea>
+                                    <div class="form-group row">
+                                        <label class="col-md-4 col-form-label text-md-right">Details</label>
+                                        <div class="col-md-6">
+                                            <textarea rows="10" class="form-control" name="templedetails"></textarea>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="form-group row">
-                                    <label class="col-md-4 col-form-label text-md-right">Deity</label>
-                                    <div class="col-md-6">
-                                        <input type="text" class="form-control" name="templedeity" required>
+                                    <div class="form-group row">
+                                        <label class="col-md-4 col-form-label text-md-right">Deity</label>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" name="templedeity" required>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="form-group row">
-                                    <label class="col-md-4 col-form-label text-md-right">Address</label>
-                                    <div class="col-md-6">
-                                        <input type="text" class="form-control" name="templeaddress" required>
+                                    <div class="form-group row">
+                                        <label class="col-md-4 col-form-label text-md-right">Address</label>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" name="templeaddress" required>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="form-group row">
-                                    <label class="col-md-4 col-form-label text-md-right">Made Year</label>
-                                    <div class="col-md-6">
-                                        <input type="date" class="form-control" name="templemadeyear">
+                                    <div class="form-group row">
+                                        <label class="col-md-4 col-form-label text-md-right">Made Year</label>
+                                        <div class="col-md-6">
+                                            <input type="date" class="form-control" name="templemadeyear">
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="form-group row">
-                                    <label class="col-md-4 col-form-label text-md-right">Images</label>
-                                    <div class="col-md-6">
-                                        <input type="file" accept="image/*" multiple class="form-control" name="templeimages[]">
+                                    <div class="form-group row">
+                                        <label class="col-md-4 col-form-label text-md-right">Images</label>
+                                        <div class="col-md-6">
+                                            <input type="file" accept="image/*" multiple class="form-control" name="templeimages[]">
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="col-md-6 offset-md-4">
-                                    <input type="submit" value="Save" name="add_temple">
-                                </div>
+                                    <div class="col-md-6 offset-md-4">
+                                        <input type="submit" value="Save" name="add_temple">
+                                    </div>
+                                </form>
+                            </div>
+
                         </div>
-                        </form>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Devalaya 2025</span>
                     </div>
                 </div>
-            </div>
-            <!-- /.container-fluid -->
+            </footer>
+            <!-- End of Footer -->
 
         </div>
-        <!-- End of Main Content -->
-
-        <!-- Footer -->
-        <footer class="sticky-footer bg-white">
-            <div class="container my-auto">
-                <div class="copyright text-center my-auto">
-                    <span>Copyright &copy;Devalaya 2025</span>
-                </div>
-            </div>
-        </footer>
-        <!-- End of Footer -->
+        <!-- End of Content Wrapper -->
 
     </div>
-    <!-- End of Content Wrapper -->
     <!-- End of Page Wrapper -->
 
     <!-- Scroll to Top Button-->
@@ -196,3 +203,5 @@ if (isset($_POST["add_temple"])) {
 </body>
 
 </html>
+
+
