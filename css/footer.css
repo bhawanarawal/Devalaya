@@ -4,8 +4,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'poppins',sans-serif;
-    font-size: 13px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 15px;
 }
 body{
     display:grid;
@@ -30,12 +30,12 @@ footer .container{
 }
 footer .container .sec h2{
     position: relative;
-    color:#333;
+    color:black;
     font-weight:600;
     margin-bottom:15px;
 }
 footer .container .sec p{
-    color:#555;
+    color:black;
 }
 footer .container .sci{
     margin-top: 20px;
@@ -50,7 +50,6 @@ footer .container .sci li a{
     display: inline-block;
     width:36px;
     height:36px;
-   
     display: grid;
     align-content: center;
     justify-content: center;
@@ -67,10 +66,14 @@ footer .container .quicklinks ul li{
     list-style: none;
 }
 footer .container .quicklinks ul li a{
-    color:#555;
+    color:black;
     text-decoration: none;
     margin-bottom: 10px;
     display:inline-block;
+}
+
+footer .container .quicklinks ul li a:hover{
+   color:blue;
 }
 footer .container .contact .info{
     position:relative;
@@ -82,12 +85,19 @@ footer .container .contact .info li{
     margin-bottom: 16px;
 }
 footer .container .contact .info li span{
-    color:#555;
+    color:black;
     text-decoration: none;
 }
+footer .container .contact .info li span:hover{
+    color:blue;
+   
+}
 footer .container .contact .info li a{
-    color:#555;
+    color:black;
     text-decoration: none;
+}
+footer .container .contact .info li a:hover{
+   color:blue;
 }
 .copyright
 {

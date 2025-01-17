@@ -24,7 +24,7 @@ $auth = new \Delight\Auth\Auth($db);
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
       <a class="navbar-brand me-auto" href="home.php">
-        <span>Devalaya</span>
+        <span><img src="images/icon-7.jpg">Devalaya</span>
       </a>
 
       <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
@@ -64,7 +64,7 @@ $auth = new \Delight\Auth\Auth($db);
           </form>
       <?php } else {
       ?>
-        <a href="auth/login.php" class="login">Login</a>
+        <a href="auth/login.php" class="login"><i class="fa-solid fa-user"></i></a>
       <?php }
       ?>
 
