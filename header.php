@@ -1,4 +1,8 @@
-<?php require_once "config.php"; ?>
+<?php require_once "config.php"; 
+require './vendor/autoload.php';
+$db = new PDO('mysql:host=localhost;dbname=devalaya_db', 'root', '');
+$auth = new \Delight\Auth\Auth($db);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +14,7 @@
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  
+
   <link rel="stylesheet" href="<?php echo BASE_URL; ?>home.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
@@ -19,8 +23,8 @@
 
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-      <a class="navbar-brand me-auto" href="#">
-        <span >Devalaya</span>
+      <a class="navbar-brand me-auto" href="home.php">
+        <span>Devalaya</span>
       </a>
 
       <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
@@ -51,10 +55,23 @@
             <li class="nav-item">
               <a class="nav-link mx-lg-2" href="contact.php">Contact</a>
             </li>
+            <?php
+      if ($auth->isLoggedIn()) {
+      ?>
+        <a><?php echo $auth->getUsername(); ?></a>
+        <form method="POST">
+          <a href="auth/logout.php" type="submit"  class="btn btn-danger" name="logout" >Logout</a>
+          </form>
+      <?php } else {
+      ?>
+        <a href="auth/login.php" class="login">Login</a>
+      <?php }
+      ?>
+
           </ul>
         </div>
       </div>
-      <a href="auth/login.php" class="login">Login</a>
+      
       <button class="navbar-toggler pe-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -62,4 +79,5 @@
   </nav>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js"></script>
 </body>
+
 </html>

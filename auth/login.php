@@ -39,15 +39,15 @@ if (isset($_POST['login'])) {
 </head>
 
 <body>
-
+        <div class="content">
     <div class="wrapper">
         <div class="logo">
-            <img src="./admin/adminimages/om.jpg" alt="">
+            <img src="ommm.jpg" alt="">
         </div>
         <div class="text-center mt-4 name">
-            Login
+            Welcome
         </div>
-        <form method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" class="p-3 mt-3">
+        <form method="POST" action="" class="p-3 mt-3">
             <div class="form-field d-flex align-items-center">
                 <span class="fas fa-user"></span>
                 <input type="text" name="email" placeholder="Enter Your Email">
@@ -55,13 +55,20 @@ if (isset($_POST['login'])) {
             <div class="form-field d-flex align-items-center">
                 <span class="fas fa-key"></span>
                 <input type="password" name="password" placeholder="Enter Your Password">
+
             </div>
             <button class="btn mt-3" type="submit" name="login">Login</button>
+            <div class="form-group d-flex">
+                <a href="#">Forgot Password ?</a>
+            </div>
         </form>
+        <p class="text-center">Not a Member? <a data-toggle="tab" href="register.php">Sign Up</a></p>
+    </div>
+    <div class="side-image">
+            <img src="log.jpg">
+        </div>
     </div>
 
-
-    
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>

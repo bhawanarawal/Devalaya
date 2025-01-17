@@ -2,7 +2,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
 <!-- Sidebar - Brand -->
-<a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+<a class="sidebar-brand d-flex align-items-center justify-content-center" href="dashboard.php">
     <div class="sidebar-brand-icon">
         <i class="fa-solid fa-house"></i>
     </div>
@@ -83,7 +83,7 @@
         data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <a class="dropdown-item" href="/devalaya/admin/templesites.php">All Events</a>
-            <a class="dropdown-item" href="/devalaya/admin/addtemple.php">New Events</a>
+            <a class="dropdown-item" href="/devalaya/admin/addevents.php">New Events</a>
         </div>
     </div>
 </li>

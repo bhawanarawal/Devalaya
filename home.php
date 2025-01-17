@@ -7,7 +7,7 @@
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="images/temple-1.jpg"  alt="...">
+      <img src="images/home-3.webp"  alt="...">
       <div class="carousel-caption ">
         <h1 ><b>BHAGAVAD GITA :</b></h1>
         <h4>“Believe me ! I am the only truth”</h4>
