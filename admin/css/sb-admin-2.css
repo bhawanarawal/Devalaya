@@ -11279,3 +11279,18 @@ footer.sticky-footer .copyright {
 body.sidebar-toggled footer.sticky-footer {
   width: 100%;
 }
+
+
+.gallery .btn{
+  border-radius: 15px;
+  padding:15px 20px;
+  margin-right: 10px;
+  position: relative;
+  
+}
+.gallery img{
+  margin-top: 10px;
+
+  
+}
+

@@ -1,128 +1,304 @@
-*{
-  margin:0px;
-  padding:0px;
+* {
+  margin: 0px;
+  padding: 0px;
   box-sizing: border-box;
   font-family: Georgia;
 }
 
 
-.navbar{
-    background-color:white;
-   padding-bottom:5px;
-    width: 100%;
-    display: flex;
-   justify-content: space-between;
-    position: sticky;
-    border-bottom: 3px solid red;
+.navbar {
+  background-color: white;
+  padding-bottom: 5px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: sticky;
+  border-bottom: 3px solid red;
 
 }
 
-.navbar-brand{
-  transition:0.3px color;
+section {
+  width: 100%;
+  height: auto;
+}
+
+html::-webkit-scrollbar {
+  width: 1rem;
+}
+
+html::-webkit-scrollbar-track {
+  background-color: white;
+
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: red;
+}
+
+.navbar-brand span{
+  transition: 0.3px color;
   font-size: 25px;
-  color:red;
+  color: red;
 }
-.navbar-brand img{
+
+.navbar-brand img {
   width: 80px;
-  height:40px;
+  height: 40px;
 }
 
 .login {
-    color:red;
-    font-size: 16px;
-    padding: 9px 15px;
-    text-decoration: none;
-    transition: 0.3s background-color;
+  color: red;
+  font-size: 16px;
+  padding: 9px 15px;
+  text-decoration: none;
+  transition: 0.3s background-color;
 }
 
-.login:hover{
-    color: black;
+.login:hover {
+  color: black;
 }
 
-.navbar-toggler{
-    border:none;
-    font-size: 1.25rem;
-}
-.navbar-toggler:focus, .btn-close:focus{
-    box-shadow: none;
-    outline:none;
-
-}
-.nav-link{
-    color:black;
-    font-weight: 500;
-    position:relative;
-    font-size: 1.15rem;
-}
-.nav-link:hover, .nav-link.active{
-    color: red;
+.navbar-toggler {
+  border: none;
+  font-size: 1.25rem;
 }
 
-@media (min-width:991px){
-    .nav-link::before{
-        content:"";
-        position:absolute;
-        bottom:0;
-        left:50%;
-        transform:translatex(-50%);
-        width:0;
-        height:2px;
-        background-color: red;
-        visibility:hidden;
-        transition: 0.3s ease-in-out;
-    }
-    .nav-link:hover::before, .nav-link.active::before{
-        width:100%;
-        visibility:visible;
-    }
+.navbar-toggler:focus,
+.btn-close:focus {
+  box-shadow: none;
+  outline: none;
+
 }
+
+.nav-link {
+  color: black;
+  font-weight: 500;
+  position: relative;
+  font-size: 1.15rem;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: red;
+}
+
+@media (min-width:991px) {
+  .nav-link::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translatex(-50%);
+    width: 0;
+    height: 2px;
+    background-color: red;
+    visibility: hidden;
+    transition: 0.3s ease-in-out;
+  }
+
+  .nav-link:hover::before,
+  .nav-link.active::before {
+    width: 100%;
+    visibility: visible;
+  }
+}
+
 @keyframes zoom {
-    from {
-      transform: scale(1, 1);
-    }
-    to {
-      transform: scale(1.4, 1.4);
-    }
-  }
-  
-  html,
-  body {
-      height: 100%;
+  from {
+    transform: scale(1, 1);
   }
 
-  .carousel,
-  .carousel-item,
-  .active {
-    height: 100%;
-     
+  to {
+    transform: scale(1.4, 1.4);
   }
-  
-  .carousel-inner {
-    height: 100%;
-    background: #000;
-  }
-  
-  .carousel-caption{
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.carousel,
+.carousel-item,
+.active {
+  height: 100%;
+
+}
+
+.carousel-inner {
+  height: 100%;
+  background: #000;
+}
+
+/* .carousel-caption{
     padding-right:25%;
     padding-bottom: 15%;
+  } */
+@keyframes fadeIn {
+  0% {
+    transform: scale(0);
+    opacity: 0%;
   }
-  
-  h1{
-    
-    font-size: 60px;}
-  
-  h4{
-    font-size: 35px;
-} 
-  .carousel-item img{
-     width: 100%;
-     height: 100%;
-      background-position: center;
-      background-size: cover;
-      opacity:0.6;
+}
+
+.carousel-caption h1 {
+
+  font-size: 6.5vw;
+  color: white;
+  text-transform: uppercase;
+  animation: fadeIn 3s linear backwards .1s;
+  padding-bottom: 1rem;
+}
+
+.carousel-caption p {
+  font-size: 4vw;
+  color: white;
+  animation: fadeIn 3s linear backwards .2s;
+  padding-bottom: 12rem;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.35;
+}
+
+.carousel-inner .carousel-item>img {
+  animation: zoom 25s;
+}
+
+
+.temples-header h1 {
+  font-size: 50px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+
+.section-about {
+  margin-top: 2rem;
+  position: relative;
+  width: 100%;
+
+}
+
+.section-about h1{
+  font-size: 50px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.top-div img {
+  position: absolute;
+  width: 320px;
+  height: 340px;
+  left: 230px;
+  top: 200px;
+  z-index: 1000;
+}
+
+.bottom-div img {
+  position: absolute;
+  width: 360px;
+  height: 350px;
+  padding-left: 40px;
+  margin-top: 0px;
+  z-index: 1000;
+
+}
+
+.third-div img {
+  width: 100%;
+  height: 60vh;
+  opacity: 0.4;
+}
+
+
+#text {
+  position: absolute;
+  left: 750px;
+  top: 100px;
+}
+
+#text h1 {
+  font-size: 40px;
+  color: red;
+}
+
+#text p {
+  font-size: 25px;
+  color: black;
+}
+
+
+div.gallery {
+  border: 1px solid #ccc;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.responsive {
+  padding: 0 6px;
+  float: left;
+  width: 24.99999%;
+}
+
+@media only screen and (max-width: 700px) {
+  .responsive {
+    width: 49.99999%;
+    margin: 6px 0;
   }
-  
-  .carousel-inner .carousel-item > img {
-    animation: zoom 30s;
+}
+
+@media only screen and (max-width: 500px) {
+  .responsive {
+    width: 100%;
   }
-  
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.section-deities h1 {
+  font-size: 50px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  text-align: center;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+#carouselMultiItemExample .carousel-item{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+#carouselMultiItemExample .card img{
+  height:350px;
+  opacity: 1;
+}
+#carouselMultiItemExample .card-body{
+  height: 200px;
+}
