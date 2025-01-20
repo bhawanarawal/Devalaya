@@ -128,7 +128,9 @@ if ($res->num_rows > 0) {
                 </div>
               </div>
             <?php } ?>
-            <a href="" data-mdb-ripple-init class="btn btn-primary">See More Temples</a>
+            <div class="temple-button">
+            <a href="#" data-mdb-ripple-init class="btn btn-primary">See More Temples</a>
+            </div>
           </div>
         </div>
       </div>
@@ -161,8 +163,10 @@ if ($res->num_rows > 0) {
   </div>
   <div id="text">
     <h1><i class="fa-solid fa-om"></i> We Hindus Believe In The Holy vedas :</h1>
-
-    <p>"Where the walls of every temple whisper history, and every prayer becomes a connection to the divine."</p>
+    <p><i class="fa-solid fa-check"></i> Rig-veda</p>
+    <p><i class="fa-solid fa-check"></i>Sama-Veda</p>
+    <p><i class="fa-solid fa-check"></i>Yajur-Veda</p>
+    <p><i class="fa-solid fa-check"></i>Atharva-Veda</p>
 
 
     <a href="about.php" class="btn btn-primary btn-lg">learn More</a>
@@ -213,7 +217,7 @@ if ($res->num_rows > 0) {
 </section>
 
 
-
+<?php require_once 'footer.php'; ?>
 
 <!-- MDB -->
 <script

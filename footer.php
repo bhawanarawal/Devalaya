@@ -1,22 +1,9 @@
-<?php require_once "config.php"; ?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>footer</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="css/footer.css">
-
-</head>
-
-<body>
     <footer>
         <div class="container">
             <div class="sec aboutus">
-                <h2>About Us</h2>
+                <h3>About Us</h3>
                 <p><i class="fa-solid fa-om"></i>  “Sanatan Dharma teaches us that divinity resides in every being and every place.
                     At Devalaya , we celebrate this eternal truth by bringing you closer
                     to the sacred temples and timeless traditions of Hinduism.”</p>
@@ -30,7 +17,7 @@
                 </ul>
             </div>
             <div class="sec quicklinks">
-            <h2>Quick links</h2>
+            <h3>Quick links</h3>
             <ul>
                 <li><i class="fa-solid fa-om"></i> <a href="#">Home</a></li>
                 <li><i class="fa-solid fa-om"></i> <a href="#">About Us</a></li>
@@ -39,17 +26,9 @@
                 <li><i class="fa-solid fa-om"></i> <a href="#">Contact</a></li>
             </ul>
             </div>
-            <div class="sec quicklinks">
-            <h2>Extra links</h2>
-            <ul>
-                <li> <i class="fa-solid fa-om"></i> <a href="#">Ask Questions</a></li>
-                <li><i class="fa-solid fa-om"></i> <a href="#">About Us</a></li>
-                <li><i class="fa-solid fa-om"></i> <a href="#">Privacy Policy</a></li>
-                <li><i class="fa-solid fa-om"></i> <a href="#">Terms Of Use</a></li>
-            </ul>
-            </div>
+           
             <div class="sec contact">
-                <h2>Contact Us</h2>
+                <h3>Contact Us</h3>
                 <ul class="info">
                     <li>
                         <span><i class="fa-solid fa-phone"></i></span><P><a
@@ -72,7 +51,4 @@
     <div class="copyright">
         <P>Copyright @2025 Devalaya</p>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js"></script>
-</body>
-
-</html>
+   

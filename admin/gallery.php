@@ -10,13 +10,9 @@ if ($res->num_rows > 0) {
     }
 }
 $data = [];
-$sql2 = "select * from gallery where id='{$_GET["id"]}'";
-$res = $con->query($sql2);
-if ($res->num_rows > 0) {
-    while ($row = $res->fetch_assoc()) {
-        $data[] = $row;
-    }
-}
+$sql2 = "select * from gallery where temple_id='{$_GET["id"]}'";
+$res_all = $con->query($sql2);
+
 
 ?>
 <!DOCTYPE html>
@@ -81,12 +77,21 @@ if ($res->num_rows > 0) {
 
 
                     <!-- DataTales Example -->
+                     
                     <?php
+                    if ($res_all->num_rows > 0) {
+                        while ($row = $res_all->fetch_assoc()) {
+                            // $data[] = $row;
+                            ?>
+                            <img src="<?php echo $row["image_path"]; ?>" />
+                            <?php
+                        }
+                    }
                     $i = 0;
                     foreach ($data as $row) {
                         $i++;
                     ?>
-                        <img src="<?php echo $row["image_path"]; ?>" />
+                        
 
 
                     <?php } ?>

@@ -1,36 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 15px;
-}
-body{
-    display:grid;
-    justify-content: center;
-    align-content: end;
-    min-height:100vh;
-    background: #e8e8e8;
-    padding:50px;
-}
-
 
 footer{
     position: relative;
     width:100%;
     height:auto;
-    padding:30px 100px;
+    padding:10px 100px;
     background: #fff;
+    border-top: 2px solid grey;
 }
 footer .container{
     width:100%;
     display:grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr;
     grid-gap:20px;
 }
-footer .container .sec h2{
+footer .container .sec h3{
     position: relative;
     color:black;
     font-weight:600;
@@ -105,10 +88,10 @@ footer .container .contact .info li a:hover{
 {
     width:100%;
     background:#fff;
-    padding: 20px 100px 30px;
+    padding: 20px 100px 5px;
     text-align: center;
     color:#555;
-   border-top: .1rem solid black;
+   border-top: 2px solid grey;
 }
 @media (max-width:991){
     footer{
