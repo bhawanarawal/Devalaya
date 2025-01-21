@@ -73,6 +73,24 @@ if (isset($_POST["add_events"])) {
                             <div class="card-body">
                                 <form action="#" method="POST" name="add_events" enctype="multipart/form-data">
 
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label text-md-right">Temple</label>
+                                    <div class="col-md-6">
+                                        <select class="form-select" name="eventtempleid">
+                                            <option selected>Please Select Temple</option>
+                                            <?php
+                                            $i = 0;
+                                            foreach ($temples as $temple) {
+                                                $i++;
+                                            ?>
+
+                                                <option value="<?php echo $temple["id"]; ?>"><?php echo $temple["name"]; ?></option>
+                                            <?php } ?>
+
+                                        </select>
+                                    </div>
+                                </div>
+
                                     <div class="form-group row">
                                         <label class="col-md-4 col-form-label text-md-right">Event Name</label>
                                         <div class="col-md-6">

@@ -2,18 +2,26 @@
 <?php
 include('connection.php');
 
+$temples = [];
+$sql = "select id,name from temple";
+$res = $con->query($sql);
+if ($res->num_rows > 0) {
+    while ($row = $res->fetch_assoc()) {
+        $temples[] = $row;
+    }
+}
 
 if (isset($_POST["add_events"])) {
     $name = $_POST["eventname"];
     $detail = $_POST["eventdetails"];
     $date = $_POST["eventdate"];
     $contact = $_POST["contact"];
+    $templeid = $_POST["eventtempleid"];
 
-    mysqli_query($con, "INSERT INTO events (name, details, event_date, contact) VALUES ('$name', '$detail',' $date','$contact')");
+    mysqli_query($con, "INSERT INTO events (name, details, event_date, contact,temple_id) VALUES ('$name', '$detail',' $date','$contact',$templeid)");
     mysqli_insert_id($con);
-
-    
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -56,13 +64,30 @@ if (isset($_POST["add_events"])) {
 
                 <?php require_once('includes/header.php'); ?>
 
-<div class="container-fluid">
+                <div class="container-fluid">
 
 
                     <div class="card">
                         <div class="card-header">New Events Information</div>
                         <div class="card-body">
                             <form action="#" method="POST" name="add_events" enctype="multipart/form-data">
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label text-md-right">Temple</label>
+                                    <div class="col-md-6">
+                                        <select class="form-select" name="eventtempleid">
+                                            <option selected>Please Select Temple</option>
+                                            <?php
+                                            $i = 0;
+                                            foreach ($temples as $temple) {
+                                                $i++;
+                                            ?>
+
+                                                <option value="<?php echo $temple["id"]; ?>"><?php echo $temple["name"]; ?></option>
+                                            <?php } ?>
+
+                                        </select>
+                                    </div>
+                                </div>
 
                                 <div class="form-group row">
                                     <label class="col-md-4 col-form-label text-md-right">Event Name</label>
@@ -99,7 +124,7 @@ if (isset($_POST["add_events"])) {
                         </form>
                     </div>
                 </div>
-                </div>
+            </div>
             <!-- /.container-fluid -->
 
         </div>
@@ -108,20 +133,21 @@ if (isset($_POST["add_events"])) {
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js"></script>
 
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-<!-- Core plugin JavaScript-->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-<!-- Custom scripts for all pages-->
-<script src="js/sb-admin-2.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
 
-<!-- Page level plugins -->
-<script src="vendor/chart.js/Chart.min.js"></script>
+    <!-- Page level plugins -->
+    <script src="vendor/chart.js/Chart.min.js"></script>
 
-<!-- Page level custom scripts -->
-<script src="js/demo/chart-area-demo.js"></script>
-<script src="js/demo/chart-pie-demo.js"></script>
+    <!-- Page level custom scripts -->
+    <script src="js/demo/chart-area-demo.js"></script>
+    <script src="js/demo/chart-pie-demo.js"></script>
 </body>
+
 </html>

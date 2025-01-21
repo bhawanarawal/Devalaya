@@ -10,6 +10,14 @@ if ($res->num_rows > 0) {
   }
 }
 
+$events = [];
+$eventres = $con->query("select * from events order by event_date desc");
+if ($eventres->num_rows > 0) {
+  while ($row = $eventres->fetch_assoc()) {
+    $events[] = $row;
+  }
+}
+
 ?>
 <?php require_once 'header.php'; ?>
 <!DOCTYPE html>
@@ -31,13 +39,10 @@ if ($res->num_rows > 0) {
   <link
     href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/8.1.0/mdb.min.css"
     rel="stylesheet" />
+
 </head>
 
 <body>
-
-</body>
-
-</html>
 
 <section>
   <div id="carouselExampleCaptions" class="carousel slide carousel-fade ">
@@ -75,31 +80,13 @@ if ($res->num_rows > 0) {
 </section>
 
 <section class="temples-header">
+  <h3><i class="fa-solid fa-om"></i>Temples<i class="fa-solid fa-om"></i></h3>
   <h1><b>Most Popular Temples</b></h1>
   <!-- Carousel wrapper -->
   <div
     id="carouselMultiItemExample"
     data-mdb-carousel-init class="carousel slide carousel-dark text-center"
     data-mdb-ride="carousel">
-    <!-- Controls -->
-    <!-- <div class="d-flex justify-content-center mb-2">
-      <button data-mdb-button-init
-        class="carousel-control-prev position-relative"
-        type="button"
-        data-mdb-target="#carouselMultiItemExample"
-        data-mdb-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button data-mdb-button-init
-        class="carousel-control-next position-relative"
-        type="button"
-        data-mdb-target="#carouselMultiItemExample"
-        data-mdb-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div> -->
     <!-- Inner -->
     <div class="carousel-inner py-4">
       <!-- Single item -->
@@ -122,104 +109,84 @@ if ($res->num_rows > 0) {
                     <p class="card-text">
                       <?php echo substr($row["details"], 0, 100) . '...'; ?>
                     </p>
-                    <a href='temples.php?id=<?php echo $row["id"]; ?>' data-mdb-ripple-init class='btn btn-primary'>See More</a>
-                    
+                    <a href='temples.php?id=<?php echo $row["id"]; ?>' data-mdb-ripple-init class='btn btn-light'>See More</a>
+
                   </div>
                 </div>
               </div>
             <?php } ?>
             <div class="temple-button">
-            <a href="#" data-mdb-ripple-init class="btn btn-primary">See More Temples</a>
+              <a href="alltemple.php" data-mdb-ripple-init class="btn btn-primary">See More Temples</a>
             </div>
           </div>
         </div>
       </div>
-     
+
     </div>
     <!-- Inner -->
   </div>
 </section>
 
 <section class="section-about">
-  <h1><b>Exploring Our Purpose</b></h1>
+  <h3><i class="fa-solid fa-om"></i>Sacred Knowledge<i class="fa-solid fa-om"></i></h3>
+  <h1><b>Some Life Lessons</b></h1>
   <div id="image">
 
     <div class="bottom-div">
-
-
-      <img src="images/home-13.webp" alt="">
-
-    </div>
-
-    <div class="top-div">
-
-      <img src="images/home-10.webp" alt="">
-    </div>
-    <div class="third-div">
-
-      <img src="images/image-12.jpg" alt="">
+      <img src="images/black-1.webp" alt="">
 
     </div>
   </div>
-  <div id="text">
-    <h1><i class="fa-solid fa-om"></i> We Hindus Believe In The Holy vedas :</h1>
-    <p><i class="fa-solid fa-check"></i> Rig-veda</p>
-    <p><i class="fa-solid fa-check"></i>Sama-Veda</p>
-    <p><i class="fa-solid fa-check"></i>Yajur-Veda</p>
-    <p><i class="fa-solid fa-check"></i>Atharva-Veda</p>
+  <div class="text">
+    <h2><i class="fa-solid fa-om"></i> We Hindus believe in the holy Vedas, the eternal light of divine knowledge</h2>
+    <h4>"Satyameva Jayate" - Truth alone triumphs</h4>
+    <ul class="two-column-list">
+      <p><i class="fa-solid fa-check"></i> Rig-veda</p>
+      <p><i class="fa-solid fa-check"></i>Sama-Veda</p>
+      <p><i class="fa-solid fa-check"></i>Yajur-Veda</p>
+      <p><i class="fa-solid fa-check"></i>Atharva-Veda</p>
+    </ul>
 
 
-    <a href="about.php" class="btn btn-primary btn-lg">learn More</a>
+    <a href="lessons.php" class="btn btn-primary btn-lg">learn More</a>
   </div>
 
 </section>
+<section class="section-events">
+  <h3><i class="fa-solid fa-om"></i>Festivals<i class="fa-solid fa-om"></i></h3>
+  <h1><b>Some Events</b></h1>
 
-<section class="section-deities">
-  <h1><b>Deities We Reverence</b></h1>
-  <div class="responsive">
-    <div class="gallery">
-      <a target="_blank" href="img_5terre.jpg">
-        <img src="images/home-14.webp" alt="Cinque Terre" width="600" height="400">
-      </a>
-      <div class="desc">Add a description of the image here</div>
-    </div>
+  <div class="eventsslider-container">
+  <div class="eventsslider">
+    <?php
+    $i = 0;
+    foreach ($events as $row) {
+      $i++;
+    ?>
+      <div class="eventscard" style="width: 15rem;">
+        <img class="card-img-top" src="images/home-12.webp" alt="Card image cap">
+        <div class="eventscard-body">
+          <h5 class="eventscard-title"><b><?php echo $row["name"]; ?></b></h5>
+          <h2 class="card-title">Date: <i class="fa-solid fa-calendar-days"></i><b><?php echo $row["event_date"]; ?></b></h2>
+          <p class="eventscard-text"><?php echo substr($row["details"], 0, 100) . '...'; ?></p>
+          <a href="temples.php?id=<?php echo $row["id"]; ?>" class="btn btn-primary">See More</a>
+        </div>
+      </div>
+    <?php } ?>
   </div>
+  <!-- Navigation Buttons -->
+  <button class="prev-btn">❮</button>
+  <button class="next-btn">❯</button>
+</div>
 
-
-  <div class="responsive">
-    <div class="gallery">
-      <a target="_blank" href="img_forest.jpg">
-        <img src="img_forest.jpg" alt="Forest" width="600" height="400">
-      </a>
-      <div class="desc">Add a description of the image here</div>
-    </div>
-  </div>
-
-  <div class="responsive">
-    <div class="gallery">
-      <a target="_blank" href="img_lights.jpg">
-        <img src="img_lights.jpg" alt="Northern Lights" width="600" height="400">
-      </a>
-      <div class="desc">Add a description of the image here</div>
-    </div>
-  </div>
-
-  <div class="responsive">
-    <div class="gallery">
-      <a target="_blank" href="img_mountains.jpg">
-        <img src="img_mountains.jpg" alt="Mountains" width="600" height="400">
-      </a>
-      <div class="desc">Add a description of the image here</div>
-    </div>
-  </div>
-
-  <div class="clearfix"></div>
 </section>
+
 
 
 <?php require_once 'footer.php'; ?>
 
 <!-- MDB -->
+<script src="script.js"></script>
 <script
   type="text/javascript"
   src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/8.1.0/mdb.umd.min.js"></script>

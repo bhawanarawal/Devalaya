@@ -35,7 +35,7 @@ html::-webkit-scrollbar-thumb {
   background-color: red;
 }
 
-.navbar-brand span{
+.navbar-brand span {
   transition: 0.3px color;
   font-size: 25px;
   color: red;
@@ -105,7 +105,7 @@ html::-webkit-scrollbar-thumb {
 
 @keyframes zoom {
   from {
-    transform: scale(1, 1);
+    transform: scale(1.1, 1.1);
   }
 
   to {
@@ -143,17 +143,17 @@ body {
 
 .carousel-caption h1 {
 
-  font-size: 6.5vw;
+  font-size: 4vw;
   color: white;
   text-transform: uppercase;
-  animation: fadeIn 3s linear backwards .1s;
+  animation: fadeIn 2s linear backwards .1s;
   padding-bottom: 1rem;
 }
 
 .carousel-caption p {
-  font-size: 4vw;
+  font-size: 3.5vw;
   color: white;
-  animation: fadeIn 3s linear backwards .2s;
+  animation: fadeIn 2s linear backwards .2s;
   padding-bottom: 12rem;
 }
 
@@ -171,145 +171,341 @@ body {
 
 
 .temples-header h1 {
-  font-size: 50px;
+  font-size: 35px;
   font-family: Georgia, 'Times New Roman', Times, serif;
   text-align: center;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
 }
 
+.temples-header h3 {
+  font-size: 20px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  text-align: center;
+  color: red;
+  margin-top: 2rem;
+}
 
 .section-about {
-  margin-top: 2rem;
   position: relative;
-  width: 100%;
-
+  max-width: 95%;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+margin-left: 2rem;
 }
 
-.section-about h1{
-  font-size: 50px;
+.section-about h1 {
+    color: #007bff;
+  font-size: 32px;
   font-family: Georgia, 'Times New Roman', Times, serif;
   text-align: center;
   margin-bottom: 2rem;
+  box-shadow: 0 5px 5px -5px rgba(0, 0, 0, 0.4);
+}
+.section-about h3 {
+  font-size: 20px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  text-align: center;
+  margin-top: 1rem;
+  color: red;
+  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.3);
+  padding-top: 1rem;
 }
 
-.top-div img {
-  position: absolute;
-  width: 320px;
-  height: 340px;
-  left: 230px;
-  top: 200px;
-  z-index: 1000;
-}
-
-.bottom-div img {
-  position: absolute;
-  width: 360px;
-  height: 350px;
-  padding-left: 40px;
-  margin-top: 0px;
-  z-index: 1000;
-
-}
-
-.third-div img {
-  width: 100%;
-  height: 60vh;
-  opacity: 0.4;
-}
-
-
-#text {
-  position: absolute;
-  left: 700px;
-  top: 100px;
-}
-
-#text h1 {
-  font-size: 40px;
+.section-events h3 {
+  font-size: 20px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  text-align: center;
+  margin-top: 3rem;
   color: red;
 }
 
-#text p {
-  font-size: 20px;
-  color:black;
-  font-weight: bold;
-}
-#text p i .fa-solid{
-  border-radius: 20px;
-}
-div.gallery {
-  border: 1px solid #ccc;
-}
-
-div.gallery:hover {
-  border: 1px solid #777;
-}
-
-div.gallery img {
-  width: 100%;
-  height: auto;
-}
-
-div.desc {
-  padding: 15px;
-  text-align: center;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-.responsive {
-  padding: 0 6px;
-  float: left;
-  width: 24.99999%;
-}
-
-@media only screen and (max-width: 700px) {
-  .responsive {
-    width: 49.99999%;
-    margin: 6px 0;
-  }
-}
-
-@media only screen and (max-width: 500px) {
-  .responsive {
-    width: 100%;
-  }
-}
-
-.clearfix:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.section-deities h1 {
-  font-size: 50px;
+.section-events h1 {
+  font-size: 32px;
   font-family: Georgia, 'Times New Roman', Times, serif;
   text-align: center;
   margin-bottom: 2rem;
-  margin-top: 2rem;
+  color: #007bff;
 }
 
-#carouselMultiItemExample .carousel-item{
+.bottom-div img {
+  position: relative;
+  width: 400px;
+  height: 380px;
+  margin-left: 80px;
+  z-index: 100;
+}
+
+.text .btn {
+  background-color: white;
+  color: black;
+  margin-left: 2rem;
+  background-color: dodgerblue;
+  color: white;
+  width: 20%;
+  font-size: 1rem;
+  border: 1px solid black;
+}
+
+.text {
+  position: absolute;
+  left: 550px;
+  top: 25px;
+  margin-top: 1rem;
+  padding-top: 2rem;
+}
+
+.text h2 {
+  font-size: 25px;
+  color: black;
+  margin-left: 2rem;
+  margin-top: 6rem;
+}
+
+.text p {
+  font-size: 20px;
+  color: black;
+  font-weight: bold;
+}
+
+.text h4 {
+  font-size: 22px;
+  color: grey;
+  margin-left: 2rem;
+  margin-top: 1rem;
+}
+
+#carouselMultiItemExample .carousel-item {
   margin-top: 1rem;
   margin-bottom: 1rem;
+
 }
 
-#carouselMultiItemExample .card img{
-  height:350px;
+#carouselMultiItemExample .container {
+  max-width: 1400px;
+}
+
+#carouselMultiItemExample .card img {
+  height: 280px;
   opacity: 1;
 }
-#carouselMultiItemExample .card-body{
+
+#carouselMultiItemExample .card-body {
   height: 200px;
+  border: 1px solid black;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-.temple-button .btn{
-  margin-top: 1rem;
-  width: 100%;
+.temple-button .btn {
+  margin-top: 2rem;
+  width: 20%;
   font-size: 1rem;
   border-radius: 10px;
-  
+  border: 1px solid black;
+  background-color: dodgerblue;
+  color: white;
 }
+
+.card-body .btn {
+  color: black;
+  border: 1px solid black;
+}
+
+.card-body .btn:hover {
+  background-color: dodgerblue;
+  color: white;
+}
+
+#carouselMultiItemExample .carousel-inner {
+  background-color: white;
+}
+
+.two-column-list {
+  -moz-column-count: 2;
+  -moz-column-gap: 15px;
+  -webkit-column-count: 2;
+  -webkit-column-gap: 10px;
+  column-count: 2;
+  column-gap: 4px;
+}
+
+.eventsslider-container {
+  position: relative;
+  width: 95%;
+  margin: auto;
+  overflow: hidden;
+
+}
+
+.eventsslider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: max-content;
+  gap: 2rem;
+
+}
+
+.eventsslider .eventscard-body .btn {
+  background-color: dodgerblue;
+  color: white;
+
+}
+
+.eventscard {
+  flex: 0 0 30%;
+  /* Each card takes 30% of the slider width */
+  margin-right: 15px;
+  /* Space between cards */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  background: #fff;
+  margin-bottom: 2.5rem;
+  border: 1px solid black;
+
+}
+
+.eventscard img {
+  width: 50%;
+  border-radius: 8px 8px 0 0;
+}
+.eventscard-body h5{
+  font-size: 1.5rem;
+}
+.eventscard-body h2{
+  font-size: 1rem;
+  color: red;
+}
+.eventscard-body p{
+  font-size: 1rem;
+}
+
+.eventscard-body {
+  padding: 10px;
+  text-align: center;
+}
+
+.prev-btn,
+.next-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: dodgerblue;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.prev-btn {
+  left: 10px;
+}
+
+.next-btn {
+  right: 10px;
+}
+
+.prev-btn:hover,
+.next-btn:hover {
+  background-color: dodgerblue;
+}
+
+
+style>
+  .temples-header {
+    padding: 40px 0;
+    background-color: #f7f7f7;
+    color: #333;
+    text-align: center;
+  }
+
+  .temples-header h3 {
+    font-size: 1.5rem;
+    color: red;
+    margin-bottom: 10px;
+  }
+
+  .temples-header h1 {
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 1rem;
+  }
+
+  .carousel-inner {
+    padding: 30px 0;
+  }
+
+  .carousel-item .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .card-img-top {
+    border-radius: 10px;
+    max-height: 200px;
+    object-fit: cover;
+  }
+
+  .card-body {
+    padding: 20px;
+  }
+
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+
+  .card-text {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: #555;
+  }
+
+  .btn-light {
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .btn-light:hover {
+    background-color: #0056b3;
+    color: #f8f9fa;
+  }
+
+  .btn-primary {
+    background-color: #ff6f61;
+    color: white;
+    padding: 12px 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .btn-primary:hover {
+    background-color: #d15546;
+  }
+
+  @media (max-width: 768px) {
+    .carousel-item .col-lg-4 {
+      flex: 1 1 45%;
+      margin-bottom: 20px;
+    }
+  }
+  

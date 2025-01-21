@@ -38,16 +38,13 @@ $auth = new \Delight\Auth\Auth($db);
               <a class="nav-link mx-lg-2 active" aria-current="page" href="home.php">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link mx-lg-2" href="#">Temples</a>
+              <a class="nav-link mx-lg-2" href="alltemple.php">Temples</a>
             </li>
             <li class="nav-item">
               <a class="nav-link mx-lg-2" href="#">Gallery</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link mx-lg-2" href="#">Events</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link mx-lg-2" href="#">Lessons</a>
+              <a class="nav-link mx-lg-2" href="lessons.php">Lessons</a>
             </li>
             <li class="nav-item">
               <a class="nav-link mx-lg-2" href="#">About Us</a>
