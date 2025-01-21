@@ -16,6 +16,9 @@
   border-bottom: 3px solid red;
 
 }
+.nav-item a{
+  color:black;
+}
 
 section {
   width: 100%;

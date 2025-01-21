@@ -47,7 +47,7 @@ $auth = new \Delight\Auth\Auth($db);
               <a class="nav-link mx-lg-2" href="lessons.php">Lessons</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link mx-lg-2" href="#">About Us</a>
+              <a class="nav-link mx-lg-2" href="about.php">About Us</a>
             </li>
             <li class="nav-item">
               <a class="nav-link mx-lg-2" href="contact.php">Contact</a>
