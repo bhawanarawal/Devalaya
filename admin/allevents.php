@@ -94,7 +94,7 @@ $data=[];
                                       <td><?php echo $row["event_date"]; ?></td>
                                       <td><?php echo $row["contact"]; ?></td>
                                       <td><a href='editevents.php?id=<?php echo $row["id"]; ?>' class='btn-blue'>Edit</a></td>
-                                      <td><a href='delete.php?id=<?php echo $row["id"]; ?>' onclick='return confirm("Are You Sure?")'  class='btn-red'>Delete</a></td>
+                                      <td><a href='eventdelete.php?id=<?php echo $row["id"]; ?>' onclick='return confirm("Are You Sure?")'  class='btn-red'>Delete</a></td>
                                     </tr>
                                     <?php } ?>
                                     </tbody>

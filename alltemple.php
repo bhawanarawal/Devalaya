@@ -133,38 +133,7 @@ if ($res->num_rows > 0) {
             id="carouselMultiItemExample"
             data-mdb-carousel-init class="carousel slide carousel-dark text-center"
             data-mdb-ride="carousel">
-            <div class="carousel-inner py-4">
-                <!-- Single item -->
-                <div class="carousel-item active">
-                    <div class="container">
-                        <div class="row">
-
-                            <?php
-                            $i = 0;
-                            foreach ($data as $row) {
-                                $i++;
-                            ?>
-                                <div class="col-lg-3">
-                                    <div class="card">
-                                        <img
-                                            src="images/home-1.webp"
-                                            class="card-img-top">
-                                        <div class="card-body">
-                                            <h5 class="card-title"><b><?php echo $row["name"]; ?></b></h5>
-                                            <p class="card-text">
-                                                <?php echo substr($row["details"], 0, 100) . '...'; ?>
-                                            </p>
-                                            <a href='temples.php?id=<?php echo $row["id"]; ?>' data-mdb-ripple-init class='btn btn-light'>See More</a>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php } ?>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+            <?php include 'card-temple.php';?>
             <!-- Inner -->
         </div>
     </section>

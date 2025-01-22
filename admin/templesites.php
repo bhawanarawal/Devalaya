@@ -99,7 +99,7 @@ $data=[];
                                       <td><?php echo $row["deity"]; ?></td>
                                       <td><?php echo $row["made_year"]; ?></td>
                                       <td><a href='edittemple.php?id=<?php echo $row["id"]; ?>' class='btn-blue'>Edit</a></td>
-                                      <td><a href='delete.php?id=<?php echo $row["id"]; ?>' onclick='return confirm("Are You Sure?")'  class='btn-red'>Delete</a></td>
+                                      <td><a href='deletetemple.php?id=<?php echo $row["id"]; ?>' onclick='return confirm("Are You Sure?")'  class='btn-red'>Delete</a></td>
                                     </tr>
                                     <?php } ?>
                                     </tbody>
