@@ -108,7 +108,7 @@ if ($eventres->num_rows > 0) {
                   <div class="card-body">
                     <h5 class="card-title"><b><?php echo $row["name"]; ?></b></h5>
                     <p class="card-text">
-                      <?php echo substr($row["details"], 0, 65) . '...'; ?>
+                      Deity :<?php echo $row["deity"] ; ?>
                     </p>
                     <a href='temples.php?id=<?php echo $row["id"]; ?>' data-mdb-ripple-init class='btn btn-light'>See More</a>
 
@@ -149,7 +149,7 @@ if ($eventres->num_rows > 0) {
     </ul>
 
 
-    <a href="lessons.php" class="btn btn-primary btn-lg">learn More</a>
+    <a href="lessons.php" class="btn btn-primary">learn More</a>
   </div>
 
 </section>
@@ -163,13 +163,13 @@ if ($eventres->num_rows > 0) {
     foreach ($events as $row) {
       $i++;
     ?>
-      <div class="eventscard" style="width: 15rem;">
+      <div class="eventscard" >
         <img class="card-img-top" src="images/home-12.webp" alt="Card image cap">
         <div class="eventscard-body">
           <h5 class="eventscard-title"><b><?php echo $row["name"]; ?></b></h5>
           <h2 class="card-title">Date: <i class="fa-solid fa-calendar-days"></i><b><?php echo $row["event_date"]; ?></b></h2>
-          <p class="eventscard-text"><?php echo substr($row["details"], 0, 100) . '...'; ?></p>
-          <a href="temples.php?id=<?php echo $row["id"]; ?>" class="btn btn-primary">See More</a>
+          <p class="eventscard-text"><?php echo substr($row["details"], 0, 50) . '...'; ?></p>
+          <a href="temples.php?id=<?php echo $row["id"]; ?>" class="btn btn-light">See More</a>
         </div>
       </div>
     <?php } ?>

@@ -66,16 +66,16 @@ $res_all = $con->query($sql2);
                     foreach ($templedata as $row) {
                         $i++;
                     ?>
-                        <a href='gallery.php?id=<?php echo $row["id"]; ?>' class="btn btn-primary btn-lg"><?php echo $row["name"]; ?></a>
+                        <a href='gallery.php?id=<?php echo $row["id"]; ?>' class="btn btn-light"><?php echo $row["name"]; ?></a>
 
 
                     <?php } ?>
                 
+                </div>
 
 
 
-
-
+                <div class="galleryimage">
                     <!-- DataTales Example -->
                      
                     <?php

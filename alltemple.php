@@ -41,16 +41,12 @@ if (isset($_POST["like"])) {
         href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/8.1.0/mdb.min.css"
         rel="stylesheet" />
     <style>
-        .temples-header {
-            padding: 40px 0;
-            background-color: #f7f7f7;
-            text-align: center;
-            color: #333;
-        }
+       
 
-        .temples-header h1 {
+        .alltemples-header h1 {
             font-size: 3rem;
             color: black;
+            text-align: center;
         }
 
         h1 .fa-om {
@@ -58,85 +54,13 @@ if (isset($_POST["like"])) {
             margin: 0 10px;
         }
 
-        .carousel-inner {
-            padding: 30px 0;
-        }
-
-        .carousel-item {
-            margin: 0;
-        }
-
-        .card {
-            border: none;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            margin-top: 2rem;
-        }
-
-        .card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .card-img-top {
-            border-radius: 10px;
-            max-height: 200px;
-            object-fit: cover;
-        }
-
-        .card-body {
-            padding: 20px;
-        }
-
-        .card-title {
-            font-size: 1.25rem;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-
-        .card-text {
-            font-size: 1rem;
-            margin-bottom: 20px;
-            color: #555;
-        }
-
-        .btn-light {
-
-            color: white;
-            border-radius: 5px;
-            padding: 10px 20px;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-
-        .btn-light:hover {
-
-            color: #f8f9fa;
-        }
-
-        @media (max-width: 768px) {
-            .carousel-item .row {
-                display: flex;
-                flex-wrap: wrap;
-            }
-
-            .carousel-item .col-lg-3 {
-                flex: 1 1 45%;
-                margin-bottom: 20px;
-            }
-
-            /* Add margin-top to create space between rows when cards wrap to the next line */
-            .carousel-item .col-lg-3:nth-child(4n+1) {
-                margin-top: 20px;
-            }
-        }
+        
     </style>
 
 </head>
 
 <body>
-    <section class="temples-header">
+    <section class="alltemples-header">
         <h1><b><i class="fa-solid fa-om"></i>Temples<i class="fa-solid fa-om"></i></b></h1>
         <!-- Carousel wrapper -->
         <div
@@ -166,7 +90,7 @@ if (isset($_POST["like"])) {
                                         <div class="card-body">
                                             <h5 class="card-title"><b><?php echo $row["name"]; ?></b></h5>
                                             <p class="card-text">
-                                                <?php echo substr($row["details"], 0, 65) . '...'; ?>
+                                                Deity :<?php echo $row["deity"]?>
                                             </p>
                                             <form action="alltemple.php" method="POST" name="like">
                                                 <input type="hidden" name="templeid" value="<?php echo $row["id"]; ?>" />
@@ -179,7 +103,7 @@ if (isset($_POST["like"])) {
                                 </div>
                             <?php } ?>
                             <div class="temple-button">
-                                <a href="alltemple.php" data-mdb-ripple-init class="btn btn-primary">See More Temples</a>
+                                <a href="alltemple.php" data-mdb-ripple-init class="btn btn-primary">Load More</a>
                             </div>
                         </div>
                     </div>

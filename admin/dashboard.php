@@ -13,6 +13,12 @@ $resultlessons = $con->query("select count(*) as 'total' from lessons");
 $rowlessons = mysqli_fetch_array($resultlessons);
 $lessonscount = $rowlessons['total'];
 
+$resultevents = $con->query("select count(*) as 'total' from events");
+$rowevents = mysqli_fetch_array($resultevents);
+$eventscount = $rowevents['total'];
+
+
+
 $sql = "select t.name temple_name, count(f.temple_id) fav_count , count(r.temple_id) comments from temple t 
 join favourite f on f.temple_id=t.id
 left join reviews r on r.temple_id=t.id
@@ -133,7 +139,7 @@ if ($res->num_rows > 0) {
                                             </div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-clipboard-list fa-2x "></i>
+                                            <i class="fa-solid fa-book fa-2x "></i>
                                         </div>
                                     </div>
                                 </div>
@@ -147,11 +153,11 @@ if ($res->num_rows > 0) {
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                Pending Requests</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                                Total Events</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $eventscount; ?></div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-comments fa-2x"></i>
+                                        <i class="fa-solid fa-calendar-days fa-2x"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -164,8 +170,8 @@ if ($res->num_rows > 0) {
                     <div class="row">
 
                         <!-- Area Chart -->
-                        <div class="col-xl-8 col-lg-7">
-                            <div class="card shadow mb-4">
+                        <div class="col-xl-8 col-lg-2">
+                            <div class="card shadow mb-2">
                                 <!-- Card Header - Dropdown -->
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -237,8 +243,8 @@ if ($res->num_rows > 0) {
                         </div>
                     </div>
 
-                    <table class="table">
-                        <thead>
+                    <table class="table table-bordered ">
+                        <thead class="table-success text-black">
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Temple Name</th>

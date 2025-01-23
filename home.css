@@ -108,17 +108,17 @@ html::-webkit-scrollbar-thumb {
 
 @keyframes zoom {
   from {
-    transform: scale(1.1, 1.1);
+    transform: scale(1, 1);
   }
 
   to {
-    transform: scale(1.4, 1.4);
+    transform: scale(1.2, 1.2);
   }
 }
 
 html,
 body {
-  height: 100%;
+  height: 77vh;
 }
 
 .carousel,
@@ -146,23 +146,23 @@ body {
 
 .carousel-caption h1 {
 
-  font-size: 4vw;
+  font-size: 3.5vw;
   color: white;
   text-transform: uppercase;
   animation: fadeIn 2s linear backwards .1s;
-  padding-bottom: 1rem;
+  
 }
 
 .carousel-caption p {
-  font-size: 3.5vw;
+  font-size: 3.3vw;
   color: white;
   animation: fadeIn 2s linear backwards .2s;
-  padding-bottom: 12rem;
+  padding-bottom: 8rem;
 }
 
 .carousel-item img {
   width: 100%;
-  height: 100%;
+  height: 95vh;
   background-position: center;
   background-size: cover;
   opacity: 0.35;
@@ -172,11 +172,11 @@ body {
   animation: zoom 25s;
 }
 
-
 .temples-header h1 {
-  font-size: 35px;
+  font-size: 28px;
   font-family: Georgia, 'Times New Roman', Times, serif;
   text-align: center;
+  color: #007bff;
 }
 
 .temples-header h3 {
@@ -184,25 +184,24 @@ body {
   font-family: Georgia, 'Times New Roman', Times, serif;
   text-align: center;
   color: red;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 .section-about {
   position: relative;
   max-width: 95%;
-  padding: 20px;
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
-margin-left: 2rem;
+margin-left: 2.5rem;
 }
 
 .section-about h1 {
     color: #007bff;
-  font-size: 32px;
+  font-size: 28px;
   font-family: Georgia, 'Times New Roman', Times, serif;
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   box-shadow: 0 5px 5px -5px rgba(0, 0, 0, 0.4);
 }
 .section-about h3 {
@@ -219,22 +218,22 @@ margin-left: 2rem;
   font-size: 20px;
   font-family: Georgia, 'Times New Roman', Times, serif;
   text-align: center;
-  margin-top: 3rem;
+  margin-top: 2rem;
   color: red;
 }
 
 .section-events h1 {
-  font-size: 32px;
+  font-size: 28px;
   font-family: Georgia, 'Times New Roman', Times, serif;
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   color: #007bff;
 }
 
 .bottom-div img {
   position: relative;
-  width: 400px;
-  height: 380px;
+  width: 380px;
+  height: 350px;
   margin-left: 80px;
   z-index: 100;
 }
@@ -245,7 +244,7 @@ margin-left: 2rem;
   margin-left: 2rem;
   background-color: dodgerblue;
   color: white;
-  width: 20%;
+  width: 25%;
   font-size: 1rem;
   border: 1px solid black;
 }
@@ -259,10 +258,10 @@ margin-left: 2rem;
 }
 
 .text h2 {
-  font-size: 25px;
+  font-size: 22px;
   color: black;
   margin-left: 2rem;
-  margin-top: 6rem;
+  margin-top: 2rem;
 }
 
 .text p {
@@ -272,48 +271,30 @@ margin-left: 2rem;
 }
 
 .text h4 {
-  font-size: 22px;
+  font-size: 20px;
   color: grey;
   margin-left: 2rem;
   margin-top: 1rem;
 }
 
-#carouselMultiItemExample .carousel-item {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-
-}
-
 #carouselMultiItemExample .container {
-  max-width: 1400px;
+  max-width: 1370px;
 }
 
 #carouselMultiItemExample .card img {
-  height: 280px;
+  height: 150px;
   opacity: 1;
 }
 
 #carouselMultiItemExample .card-body {
-  height: 200px;
+  height: 150px;
   border: 1px solid black;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
-
-.temple-button .btn {
-  margin-top: 2rem;
-  width: 20%;
-  font-size: 1rem;
-  border-radius: 10px;
-  border: 1px solid black;
-  background-color: dodgerblue;
-  color: white;
-}
-
 .card-body .btn {
   color: black;
   border: 1px solid black;
 }
-
 .card-body .btn:hover {
   background-color: dodgerblue;
   color: white;
@@ -322,6 +303,91 @@ margin-left: 2rem;
 #carouselMultiItemExample .carousel-inner {
   background-color: white;
 }
+
+.carousel-inner {
+  padding: 0 0;
+}
+
+.carousel-item .row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom:1rem;
+  width: 320px;
+ 
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.card-text {
+  font-size: 1rem;
+  margin-bottom: 0;
+  color: #555;
+}
+
+.btn-light {
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-weight: bold;
+  text-transform:lowercase;
+}
+
+.btn-light:hover {
+  background-color: #0056b3;
+  color: #f8f9fa;
+}
+
+.btn-primary {
+  color: white;
+  padding: 12px 24px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.btn-primary:hover {
+  background-color: #d15546;
+}
+
+@media (max-width: 768px) {
+  .carousel-item .col-lg-4 {
+    flex: 1 1 45%;
+    margin-bottom: 20px;
+  }
+}
+.temple-button .btn {
+  width: 20%;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 1px solid black;
+  background-color: dodgerblue;
+  color: white;
+}
+
+
+
 
 .two-column-list {
   -moz-column-count: 2;
@@ -343,15 +409,19 @@ margin-left: 2rem;
 .eventsslider {
   display: flex;
   transition: transform 0.5s ease-in-out;
-  width: max-content;
-  gap: 2rem;
+  width: 700px;
+  gap: 1rem;
 
 }
 
 .eventsslider .eventscard-body .btn {
+border: 1px solid black;
+  color: black;
+
+}
+.eventsslider .eventscard-body .btn:hover {
   background-color: dodgerblue;
   color: white;
-
 }
 
 .eventscard {
@@ -362,17 +432,19 @@ margin-left: 2rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   background: #fff;
-  margin-bottom: 2.5rem;
+  
   border: 1px solid black;
+  height: 300px;
 
 }
 
 .eventscard img {
-  width: 50%;
+  width: 100%;
   border-radius: 8px 8px 0 0;
+  height: 40%;
 }
 .eventscard-body h5{
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 .eventscard-body h2{
   font-size: 1rem;
@@ -383,7 +455,7 @@ margin-left: 2rem;
 }
 
 .eventscard-body {
-  padding: 10px;
+  padding: 2px;
   text-align: center;
 }
 
@@ -413,102 +485,3 @@ margin-left: 2rem;
 .next-btn:hover {
   background-color: dodgerblue;
 }
-
-
-style>
-  .temples-header {
-    padding: 40px 0;
-    background-color: #f7f7f7;
-    color: #333;
-    text-align: center;
-  }
-
-  .temples-header h3 {
-    font-size: 1.5rem;
-    color: red;
-    margin-bottom: 10px;
-  }
-
-  .temples-header h1 {
-    font-weight: bold;
-    color: #007bff;
-    margin-bottom: 1rem;
-  }
-
-  .carousel-inner {
-    padding: 30px 0;
-  }
-
-  .carousel-item .row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-  }
-
-  .card {
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  }
-
-  .card-img-top {
-    border-radius: 10px;
-    max-height: 200px;
-    object-fit: cover;
-  }
-
-  .card-body {
-    padding: 20px;
-  }
-
-  .card-title {
-    font-size: 1.25rem;
-    font-weight: bold;
-    margin-bottom: 15px;
-  }
-
-  .card-text {
-    font-size: 1rem;
-    margin-bottom: 20px;
-    color: #555;
-  }
-
-  .btn-light {
-    background-color: #007bff;
-    color: white;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-weight: bold;
-    text-transform: uppercase;
-  }
-
-  .btn-light:hover {
-    background-color: #0056b3;
-    color: #f8f9fa;
-  }
-
-  .btn-primary {
-    background-color: #ff6f61;
-    color: white;
-    padding: 12px 24px;
-    font-weight: bold;
-    text-transform: uppercase;
-  }
-
-  .btn-primary:hover {
-    background-color: #d15546;
-  }
-
-  @media (max-width: 768px) {
-    .carousel-item .col-lg-4 {
-      flex: 1 1 45%;
-      margin-bottom: 20px;
-    }
-  }
-  
