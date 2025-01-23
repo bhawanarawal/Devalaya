@@ -38,12 +38,14 @@ if ($res->num_rows > 0) {
             padding: 0;
             background-color: #f5f5f5;
         }
-        h1 {
+        .lesson-header h1 {
             text-align: center;
             color: black;
-            margin: 40px 0;
-            font-size: 2.5rem;
+            margin: 10px 0;
+            font-size: 1.5rem;
             text-transform: uppercase;
+            margin-bottom: 2rem;
+            margin-top: 1rem;
         }
         h1 .fa-om {
             color: #ff5722;
@@ -53,16 +55,16 @@ if ($res->num_rows > 0) {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px;
-            margin: 20px auto;
-            max-width: 90%;
+            gap: 25px;
+            margin: 12px auto;
+            max-width: 92%;
             width: 100%;
         }
         .quotecard {
             background-color: white;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            padding: 20px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+            padding: 15px;
             width: 100%;
             display: flex;
             align-items: center;
@@ -75,7 +77,7 @@ if ($res->num_rows > 0) {
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
         }
         .quotecard img {
-            width: 50px;
+            width: 60px;
             height: 50px;
             border-radius: 50%;
             border: 2px solid #444;
@@ -84,14 +86,14 @@ if ($res->num_rows > 0) {
         }
         .quotecard {
             flex: 1;
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: black;
             font-family: Georgia, 'Times New Roman', Times, serif;
             line-height: 1.6;
         }
         .quotecard-body {
             font-size: 1rem;
-            color: #777;
+            color: red;
             font-weight: bold;
             margin-left: 20px;
             text-align: right;
@@ -100,8 +102,8 @@ if ($res->num_rows > 0) {
         }
     </style>
 </head>
-<section class="temples-header">
-    <h1><b><i class="fa-solid fa-om"></i>Life Lessons<i class="fa-solid fa-om"></i></b></h1>
+<section class="lesson-header">
+    <h1><b><i class="fa-solid fa-om"></i>Seeds Of Knowledge From Holy Book<i class="fa-solid fa-om"></i></b></h1>
     <div class="row">
         <?php
         $i = 0;
@@ -109,7 +111,7 @@ if ($res->num_rows > 0) {
             $i++;
         ?>
             <div class="quotecard">
-                <img src="images/black-1.webp" alt="Avatar" style="width:50px;height:50px;border-radius: 50%;border:2px solid black">"<?php echo $row["quote"]; ?>"
+                <img src="images/black-1.webp" alt="Avatar">"<?php echo $row["quote"]; ?>"
                 <div class="quotecard-body">
                     <P> - <?php echo $row["source"]; ?></P>
 

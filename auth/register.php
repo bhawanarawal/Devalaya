@@ -7,7 +7,7 @@ $auth = new \Delight\Auth\Auth($db);
 
 if (isset($_POST["register"])) {
     try {
-        $userId = $auth->register($_POST['email'], $_POST['password'], $_POST['email'], function ($selector, $token) {
+        $userId = $auth->register($_POST['email'], $_POST['password'], $_POST['username'], function ($selector, $token) {
             echo 'Send ' . $selector . ' and ' . $token . ' to the user (e.g. via email)';
             echo '  For emails, consider using the mail(...) function, Symfony Mailer, Swiftmailer, PHPMailer, etc.';
             echo '  For SMS, consider using a third-party service and a compatible SDK';
@@ -69,10 +69,15 @@ if (isset($_POST["register"])) {
             SignUp
         </div>
         <form method="POST" action="#" method="POST" name="register" class="p-3 mt-3">
-            <div class="form-field d-flex align-items-center">
+        <div class="form-field d-flex align-items-center">
                 <span class="fas fa-user"></span>
+                <input type="text" name="username" placeholder="Enter Your name">
+            </div>
+            <div class="form-field d-flex align-items-center">
+                <span class="fas fa-mail"></span>
                 <input type="text" name="email" placeholder="Enter Your Email">
             </div>
+
             <div class="form-field d-flex align-items-center">
                 <span class="fas fa-key"></span>
                 <input type="password" name="password" placeholder="Enter Your Password">

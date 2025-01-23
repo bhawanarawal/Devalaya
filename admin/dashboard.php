@@ -9,6 +9,23 @@ $resultgallery = $con->query("select count(*) as 'total' from gallery");
 $rowgallery = mysqli_fetch_array($resultgallery);
 $imagecount = $rowgallery['total'];
 
+$resultlessons = $con->query("select count(*) as 'total' from lessons");
+$rowlessons = mysqli_fetch_array($resultlessons);
+$lessonscount = $rowlessons['total'];
+
+$sql = "select t.name temple_name, count(f.temple_id) fav_count , count(r.temple_id) comments from temple t 
+join favourite f on f.temple_id=t.id
+left join reviews r on r.temple_id=t.id
+group by f.temple_id,r.temple_id";
+$data = [];
+$res = $con->query($sql);
+if ($res->num_rows > 0) {
+    while ($row = $res->fetch_assoc()) {
+        $data[] = $row;
+    }
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,7 +57,7 @@ $imagecount = $rowgallery['total'];
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-        <?php require_once ('includes/sidebar.php');?>
+        <?php require_once('includes/sidebar.php'); ?>
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -48,7 +65,7 @@ $imagecount = $rowgallery['total'];
             <!-- Main Content -->
             <div id="content">
 
-            <?php require_once ('includes/header.php');?>
+                <?php require_once('includes/header.php'); ?>
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
@@ -69,7 +86,7 @@ $imagecount = $rowgallery['total'];
                                             <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $sitecount; ?></div>
                                         </div>
                                         <div class="col-auto">
-                                        <i class="fa-solid fa-house fa-2x"></i>
+                                            <i class="fa-solid fa-house fa-2x"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -100,11 +117,11 @@ $imagecount = $rowgallery['total'];
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total Lessons
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?php echo $lessonscount; ?></div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="progress progress-sm mr-2">
@@ -220,7 +237,34 @@ $imagecount = $rowgallery['total'];
                         </div>
                     </div>
 
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Temple Name</th>
+                                <th scope="col">favorite Count</th>
+                                <th scope="col">Comment Count</th>
+                                <th scope="col">Average Rating</th>
+                            </tr>
+                        </thead>
+                        <tbody><?php
+                                $i = 0;
+                                foreach ($data as $row) {
+                                    $i++;
+                                ?>
+                                <tr>
+                                    <th scope="row"><?php echo $i; ?></th>
+                                    <td><?php echo $row["temple_name"]; ?></td>
+                                    <td><?php echo $row["fav_count"]; ?></td>
+                                    <td><?php echo $row["comments"]; ?></td>
+                                    <td><?php echo $row["comments"]; ?></td>
 
+                                </tr>
+                            <?php } ?>
+
+
+                        </tbody>
+                    </table>
                 </div>
                 <!-- /.container-fluid -->
 

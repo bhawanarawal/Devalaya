@@ -1,6 +1,9 @@
 <?php
 session_start();
 include('./admin/connection.php');
+require './vendor/autoload.php';
+$db = new PDO('mysql:host=localhost;dbname=devalaya_db', 'root', '');
+$auth = new \Delight\Auth\Auth($db);
 $sql = "select * from temple where id={$_GET["id"]}";
 $res = $con->query($sql);
 if ($res->num_rows > 0) {
@@ -15,6 +18,13 @@ if ($galleryres->num_rows > 0) {
     }
 }
 
+if (isset($_POST["review"])) {
+    $templeid = $_POST["templeid"];
+    $rating = $_POST["rating"];
+    $comment = $_POST["comment"];
+    $username = $auth->isLoggedIn() ? $auth->getUsername() : "anonymous user";
+    mysqli_query($con, "INSERT INTO reviews (rating,comment,commented_by, temple_id) VALUES ($rating,'$comment','$username', $templeid)");
+}
 ?>
 <?php require_once 'header.php'; ?>
 <!DOCTYPE html>
@@ -40,79 +50,119 @@ if ($galleryres->num_rows > 0) {
 
 
 
-        <style>
+    <style>
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: Georgia, 'Times New Roman', Times, serif;
             background-color: #f9f9f9;
             margin: 0;
             padding: 0;
         }
-        .temples-header {
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('images/temple-bg.jpg');
+
+        .alltemples-header {
+            background: white;
             background-size: cover;
             color: white;
             text-align: center;
-            padding: 50px 20px;
+            padding: 20px 10px;
         }
-        .temples-header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
+
+        .alltemples-header h1 {
+            font-size: 2rem;
+            margin-bottom: 15px;
             text-transform: uppercase;
+            color: black;
+
         }
-        .temples-header h4 {
-            margin: 10px 0;
-            font-size: 1.2rem;
+
+        .alltemples-header h4 {
+            margin: 5px 0;
+            font-size: 1rem;
+            color: black
         }
-        .temples-header p {
-            margin-top: 20px;
-            font-size: 1.1rem;
+
+        .alltemples-header p {
+            margin-top: 1rem;
+            font-size: 1rem;
             line-height: 1.6;
-            color: #e0e0e0;
+            color: black;
+            text-align: justify;
+            padding: 0 20px;
         }
+
         .gallery {
-            margin: 30px auto;
+            margin: 10px auto;
             max-width: 1200px;
             padding: 20px;
-            background: white;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
         }
+
         .gallery h3 {
             text-align: center;
             margin-bottom: 20px;
             font-size: 1.8rem;
             color: #333;
+            font-weight: bold;
+
         }
+
         .gallery img {
             width: 100%;
-            max-width: 300px;
-            height: auto;
-            margin: 10px;
+            max-width: 150px;
+            height: 150px;
+            margin: 5px;
             border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            border: 1px solid black;
+
             transition: transform 0.3s;
         }
+
         .gallery img:hover {
             transform: scale(1.05);
         }
+
         @media (max-width: 768px) {
             .gallery img {
                 max-width: 100%;
             }
         }
+
+        .star-rating {
+            direction: rtl;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .star-rating input {
+            display: none;
+        }
+
+        .star-rating label {
+            color: #ddd;
+            font-size: 24px;
+            padding: 0 2px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .star-rating label:hover,
+        .star-rating label:hover~label,
+        .star-rating input:checked~label {
+            color: #ffc107;
+        }
     </style>
 </head>
 
 <body>
-    <section class="temples-header">
+    <section class="alltemples-header">
         <h1><b><?php echo $row["name"]; ?></b></h1>
         <h4><b>Estd : <?php echo $row["made_year"]; ?></b></h4>
         <h4><b>Location : <?php echo $row["address"]; ?></b></h4>
         <h4><b>Deity : <?php echo $row["deity"]; ?></b></h4>
         <p><?php echo $row["details"]; ?></p>
         <div class="gallery">
-            <h3>Site Images</h3>
-            
+            <h3>Gallery</h3>
+
             <?php
             $i = 0;
             foreach ($images as $image) {
@@ -121,12 +171,40 @@ if ($galleryres->num_rows > 0) {
                 <img src="admin/<?php echo $image["image_path"]; ?>" />
             <?php } ?>
         </div>
+        <form name="review" method="POST" action="#">
+            <input type="hidden" name="templeid" value="<?php echo $row["id"]; ?>" />
+            <p class="col-form-label text-center">Please Rate this Site</p>
 
+            <div class="star-rating animated-stars">
+                <input type="radio" id="star5" name="rating" value="5">
+                <label for="star5"><i class="fa-solid fa-star"></i></label>
+                <input type="radio" id="star4" name="rating" value="4">
+                <label for="star4"><i class="fa-solid fa-star"></i></label>
+                <input type="radio" id="star3" name="rating" value="3">
+                <label for="star3"><i class="fa-solid fa-star"></i></label>
+                <input type="radio" id="star2" name="rating" value="2">
+                <label for="star2"><i class="fa-solid fa-star"></i></label>
+                <input type="radio" id="star1" name="rating" value="1">
+                <label for="star1"><i class="fa-solid fa-star"></i></label>
+            </div>
+            <textarea rows="5" name="comment" class="form-control" placeholder="Your Comment.."></textarea>
+            <button type="submit" name="review" class="btn btn-primary">Send</button>
+        </form>
     </section>
 
 
     <?php require_once 'footer.php'; ?>
     <!-- MDB -->
+    <script>
+        document.querySelectorAll('.star-rating:not(.readonly) label').forEach(star => {
+            star.addEventListener('click', function() {
+                this.style.transform = 'scale(1.2)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 200);
+            });
+        });
+    </script>
     <script
         type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/8.1.0/mdb.umd.min.js"></script>

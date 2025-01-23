@@ -1,6 +1,10 @@
 <?php
 session_start();
 include('./admin/connection.php');
+require './vendor/autoload.php';
+$db = new PDO('mysql:host=localhost;dbname=devalaya_db', 'root', '');
+$auth = new \Delight\Auth\Auth($db);
+
 $data = [];
 $sql = "select * from temple order by made_year desc";
 $res = $con->query($sql);
@@ -8,6 +12,12 @@ if ($res->num_rows > 0) {
     while ($row = $res->fetch_assoc()) {
         $data[] = $row;
     }
+}
+
+if (isset($_POST["like"])) {
+    $templeid = $_POST["templeid"];
+    $username = $auth->isLoggedIn() ? $auth->getUsername() : "anonymous user";
+    mysqli_query($con, "INSERT INTO favourite (username, temple_id) VALUES ('$username', $templeid)");
 }
 ?>
 <?php require_once 'header.php'; ?>
@@ -92,7 +102,7 @@ if ($res->num_rows > 0) {
         }
 
         .btn-light {
-            
+
             color: white;
             border-radius: 5px;
             padding: 10px 20px;
@@ -133,9 +143,50 @@ if ($res->num_rows > 0) {
             id="carouselMultiItemExample"
             data-mdb-carousel-init class="carousel slide carousel-dark text-center"
             data-mdb-ride="carousel">
-            <?php include 'card-temple.php';?>
-            <!-- Inner -->
-        </div>
+            <div class="carousel-inner py-4">
+                <!-- Single item -->
+                <div class="carousel-item active">
+                    <div class="container">
+                        <div class="row">
+
+                            <?php
+                            $i = 0;
+                            foreach ($data as $row) {
+                                $i++;
+                                $sql = "select * from gallery where temple_id = " . $row['id'] . " limit 1";
+                                $res = $con->query($sql);
+
+                                $img = $res->fetch_assoc();
+                            ?>
+                                <div class="col-lg-3">
+                                    <div class="card">
+                                        <img
+                                            src="admin/<?php echo $img['image_path']; ?>"
+                                            class="card-img-top">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><b><?php echo $row["name"]; ?></b></h5>
+                                            <p class="card-text">
+                                                <?php echo substr($row["details"], 0, 65) . '...'; ?>
+                                            </p>
+                                            <form action="alltemple.php" method="POST" name="like">
+                                                <input type="hidden" name="templeid" value="<?php echo $row["id"]; ?>" />
+                                                <input type="submit" name="like" value="Like" />
+                                            </form>
+                                            <a href='temples.php?id=<?php echo $row["id"]; ?>' data-mdb-ripple-init class='btn btn-light'>See More</a>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php } ?>
+                            <div class="temple-button">
+                                <a href="alltemple.php" data-mdb-ripple-init class="btn btn-primary">See More Temples</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inner -->
+            </div>
     </section>
     <?php require_once 'footer.php'; ?>
 

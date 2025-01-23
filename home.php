@@ -2,7 +2,7 @@
 session_start();
 include('./admin/connection.php');
 $data = [];
-$sql = "select * from temple order by made_year desc limit 3";
+$sql = "select * from temple order by made_year desc limit 4";
 $res = $con->query($sql);
 if ($res->num_rows > 0) {
   while ($row = $res->fetch_assoc()) {
@@ -43,8 +43,6 @@ if ($eventres->num_rows > 0) {
 </head>
 
 <body>
-
-<section>
   <div id="carouselExampleCaptions" class="carousel slide carousel-fade ">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -77,7 +75,6 @@ if ($eventres->num_rows > 0) {
       <span class="visually-hidden">Next</span>
     </button>
   </div>
-</section>
 
 <section class="temples-header">
   <h3><i class="fa-solid fa-om"></i>Temples<i class="fa-solid fa-om"></i></h3>
@@ -88,7 +85,45 @@ if ($eventres->num_rows > 0) {
     data-mdb-carousel-init class="carousel slide carousel-dark text-center"
     data-mdb-ride="carousel">
     <!-- Inner -->
-    <?php include 'card-temple.php';?>
+    <div class="carousel-inner py-4">
+      <!-- Single item -->
+      <div class="carousel-item active">
+        <div class="container">
+          <div class="row">
+
+            <?php
+            $i = 0;
+            foreach ($data as $row) {
+              $i++;
+              $sql = "select * from gallery where temple_id = ".$row['id']." limit 1";
+              $res = $con->query($sql);
+              
+              $img = $res->fetch_assoc();
+            ?>
+              <div class="col-lg-3">
+                <div class="card">
+                  <img
+                    src="admin/<?php echo $img['image_path'];?>"
+                    class="card-img-top">
+                  <div class="card-body">
+                    <h5 class="card-title"><b><?php echo $row["name"]; ?></b></h5>
+                    <p class="card-text">
+                      <?php echo substr($row["details"], 0, 65) . '...'; ?>
+                    </p>
+                    <a href='temples.php?id=<?php echo $row["id"]; ?>' data-mdb-ripple-init class='btn btn-light'>See More</a>
+
+                  </div>
+                </div>
+              </div>
+            <?php } ?>
+            <div class="temple-button">
+              <a href="alltemple.php" data-mdb-ripple-init class="btn btn-primary">See More Temples</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
     <!-- Inner -->
   </div>
 </section>
@@ -121,7 +156,6 @@ if ($eventres->num_rows > 0) {
 <section class="section-events">
   <h3><i class="fa-solid fa-om"></i>Festivals<i class="fa-solid fa-om"></i></h3>
   <h1><b>Some Events</b></h1>
-
   <div class="eventsslider-container">
   <div class="eventsslider">
     <?php
@@ -143,7 +177,8 @@ if ($eventres->num_rows > 0) {
   <!-- Navigation Buttons -->
   <button class="prev-btn">❮</button>
   <button class="next-btn">❯</button>
-</div>
+
+  </div>
 
 </section>
 

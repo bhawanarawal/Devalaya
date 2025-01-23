@@ -94,7 +94,7 @@ if (isset($_POST["add_temple"])) {
                                     <div class="form-group row">
                                         <label class="col-md-4 col-form-label text-md-right">Details</label>
                                         <div class="col-md-6">
-                                            <textarea rows="10" class="form-control" name="templedetails"></textarea>
+                                            <textarea rows="20" class="form-control" name="templedetails"></textarea>
                                         </div>
                                     </div>
 
