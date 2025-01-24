@@ -138,8 +138,8 @@ if (isset($_POST["review"])) {
         }
 
         .star-rating label {
-            color: #ddd;
-            font-size: 24px;
+            color: black;
+            font-size: 34px;
             padding: 0 2px;
             cursor: pointer;
             transition: all 0.2s ease;
@@ -149,6 +149,11 @@ if (isset($_POST["review"])) {
         .star-rating label:hover~label,
         .star-rating input:checked~label {
             color: #ffc107;
+        }
+        form button{
+            margin-top: 1rem;
+           
+            width: 15%;
         }
     </style>
 </head>

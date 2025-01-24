@@ -41,10 +41,8 @@ if (isset($_POST["like"])) {
         href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/8.1.0/mdb.min.css"
         rel="stylesheet" />
     <style>
-       
-
         .alltemples-header h1 {
-            font-size: 3rem;
+            font-size: 1.8rem;
             color: black;
             text-align: center;
         }
@@ -54,9 +52,48 @@ if (isset($_POST["like"])) {
             margin: 0 10px;
         }
 
-        
-    </style>
+        .class {
+            margin-right: 15rem;
+            margin-top: 1rem;
+            display: flex;
+            gap: 3.5rem;
+           
+        }
 
+        .class button {
+            border: none;
+            background-color: white;
+            font-size: 25px;
+            color: #999;
+            
+        }
+
+        .class button:hover, .class button:checked~label {
+            border: none;
+            background-color: white;
+            font-size: 25px;
+            color: red;
+            
+        }
+
+        .classbutton .btn-light {
+
+            border: 1px solid black;
+            color: black;
+            border-radius: 5px;
+            padding: 0 50px;
+            font-weight: bold;
+            text-transform: lowercase;
+        }
+
+        .alltemples-header .class .btn-light:hover {
+            background-color: dodgerblue;
+            color: #f8f9fa;
+        }
+
+        
+
+    </style>
 </head>
 
 <body>
@@ -90,14 +127,22 @@ if (isset($_POST["like"])) {
                                         <div class="card-body">
                                             <h5 class="card-title"><b><?php echo $row["name"]; ?></b></h5>
                                             <p class="card-text">
-                                                Deity :<?php echo $row["deity"]?>
+                                                Deity :<?php echo substr( $row["deity"],0,20). ".." ?>
                                             </p>
-                                            <form action="alltemple.php" method="POST" name="like">
-                                                <input type="hidden" name="templeid" value="<?php echo $row["id"]; ?>" />
-                                                <input type="submit" name="like" value="Like" />
-                                            </form>
-                                            <a href='temples.php?id=<?php echo $row["id"]; ?>' data-mdb-ripple-init class='btn btn-light'>See More</a>
+                                            <div class="class">
+                                                <form action="alltemple.php" method="POST" name="like">
+                                                    <input type="hidden" name="templeid" value="<?php echo $row["id"]; ?>" />
 
+
+                                                    <button type="submit" name="like" >❤</button>
+                                                
+
+
+                                                </form>
+                                                <div class="classbutton">
+                                                    <a href='temples.php?id=<?php echo $row["id"]; ?>' data-mdb-ripple-init class='btn btn-light'>See More</a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -115,6 +160,8 @@ if (isset($_POST["like"])) {
     <?php require_once 'footer.php'; ?>
 
     <!-- MDB -->
+
+    
     <script
         type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/8.1.0/mdb.umd.min.js"></script>

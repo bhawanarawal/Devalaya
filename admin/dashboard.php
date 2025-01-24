@@ -246,9 +246,9 @@ if ($res->num_rows > 0) {
                     <table class="table table-bordered ">
                         <thead class="table-success text-black">
                             <tr>
-                                <th scope="col">#</th>
+                                <th scope="col">SN</th>
                                 <th scope="col">Temple Name</th>
-                                <th scope="col">favorite Count</th>
+                                <th scope="col">Favorite Count</th>
                                 <th scope="col">Comment Count</th>
                                 <th scope="col">Average Rating</th>
                             </tr>

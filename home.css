@@ -304,9 +304,6 @@ margin-left: 2.5rem;
   background-color: white;
 }
 
-.carousel-inner {
-  padding: 0 0;
-}
 
 .carousel-item .row {
   display: flex;
