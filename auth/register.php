@@ -74,7 +74,7 @@ if (isset($_POST["register"])) {
                 <input type="text" name="username" placeholder="Enter Your name">
             </div>
             <div class="form-field d-flex align-items-center">
-                <span class="fas fa-mail"></span>
+                <span class="fas fa-envelope"></span>
                 <input type="text" name="email" placeholder="Enter Your Email">
             </div>
 
@@ -93,35 +93,6 @@ if (isset($_POST["register"])) {
 </body>
 
 
-<div class="content">
-    <div class="wrapper">
-        <div class="logo">
-            <img src="ommm.jpg" alt="">
-        </div>
-        <div class="text-center mt-4 name">
-            Welcome
-        </div>
-        <form method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" class="p-3 mt-3">
-            <div class="form-field d-flex align-items-center">
-                <span class="fas fa-user"></span>
-                <input type="text" name="email" placeholder="Enter Your Email">
-            </div>
-            <div class="form-field d-flex align-items-center">
-                <span class="fas fa-key"></span>
-                <input type="password" name="password" placeholder="Enter Your Password">
-
-            </div>
-            <button class="btn mt-3" type="submit" name="login">Login</button>
-            <div class="form-group d-flex">
-                <a href="#">Forgot Password ?</a>
-            </div>
-        </form>
-        <p class="text-center">Not a Member? <a data-toggle="tab" href="register.php">Sign Up</a></p>
-    </div>
-    <div class="side-image">
-            <img src="log.jpg">
-        </div>
-    </div>
 
 
 

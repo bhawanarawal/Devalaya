@@ -9,6 +9,7 @@ if ($res->num_rows > 0) {
         $templedata[] = $row;
     }
 }
+
 $data = [];
 $sql2 = "select * from gallery where temple_id='{$_GET["id"]}'";
 $res_all = $con->query($sql2);

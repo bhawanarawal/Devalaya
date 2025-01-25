@@ -422,7 +422,7 @@ border: 1px solid black;
 }
 
 .eventscard {
-  flex: 0 0 30%;
+  flex: 0 0 45%;
   /* Each card takes 30% of the slider width */
   margin-right: 15px;
   /* Space between cards */
@@ -431,21 +431,19 @@ border: 1px solid black;
   background: #fff;
   
   border: 1px solid black;
-  height: 300px;
+  height: 180px;
 
-}
-
-.eventscard img {
-  width: 100%;
-  border-radius: 8px 8px 0 0;
-  height: 40%;
 }
 .eventscard-body h5{
   font-size: 1rem;
+  margin-top: 1rem;
 }
 .eventscard-body h2{
   font-size: 1rem;
   color: red;
+}
+.eventscard-title i .fa-calendar-days{
+  color: black;
 }
 .eventscard-body p{
   font-size: 1rem;

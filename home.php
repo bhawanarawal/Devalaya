@@ -164,11 +164,12 @@ if ($eventres->num_rows > 0) {
       $i++;
     ?>
       <div class="eventscard" >
-        <img class="card-img-top" src="images/home-12.webp" alt="Card image cap">
+
         <div class="eventscard-body">
-          <h5 class="eventscard-title"><b><?php echo $row["name"]; ?></b></h5>
-          <h2 class="card-title">Date: <i class="fa-solid fa-calendar-days"></i><b><?php echo $row["event_date"]; ?></b></h2>
-          <p class="eventscard-text"><?php echo substr($row["details"], 0, 50) . '...'; ?></p>
+          <h5 class="eventscard-title"><b>Event Name:<?php echo $row["name"]; ?></b></h5>
+          <h2 class="eventscard-title"><i class="fa-regular fa-calendar-days fa-2x"></i> :<b><?php echo $row["event_date"]; ?></b></h2>
+          <p class="eventscard-text"><b>Contact:</b><?php echo $row["contact"]; ?></p>
+          <!-- <p class="eventscard-text"><?php echo substr($row["details"], 0, 50) . '...'; ?></p> -->
           <a href="temples.php?id=<?php echo $row["id"]; ?>" class="btn btn-light">See More</a>
         </div>
       </div>

@@ -19,10 +19,22 @@ $eventscount = $rowevents['total'];
 
 
 
-$sql = "select t.name temple_name, count(f.temple_id) fav_count , count(r.temple_id) comments from temple t 
-join favourite f on f.temple_id=t.id
-left join reviews r on r.temple_id=t.id
-group by f.temple_id,r.temple_id";
+// $sql = "select t.name temple_name, count(f.temple_id) fav_count , count(r.temple_id) comments from temple t 
+// join favourite f on f.temple_id=t.id
+// left join reviews r on r.temple_id=t.id
+// group by f.temple_id,r.temple_id";
+// $sql="SELECT 
+//             t.name AS temple_name, 
+//             (SELECT COUNT(*) FROM favourite f WHERE f.temple_id = t.id) AS fav_count, 
+//             (SELECT COUNT(*) FROM reviews r WHERE r.temple_id = t.id) AS comments ,
+//         FROM temple t";
+$sql="SELECT 
+            t.name AS temple_name, 
+            (SELECT COUNT(*) FROM favourite f WHERE f.temple_id = t.id) AS fav_count, 
+            (SELECT COUNT(*) FROM reviews r WHERE r.temple_id = t.id) AS comments,
+            (SELECT AVG(rating) FROM reviews r WHERE r.temple_id = t.id) AS average_rating,
+            (SELECT SUM(rating) FROM reviews r WHERE r.temple_id = t.id) AS total_rating
+        FROM temple t";
 $data = [];
 $res = $con->query($sql);
 if ($res->num_rows > 0) {
@@ -263,7 +275,7 @@ if ($res->num_rows > 0) {
                                     <td><?php echo $row["temple_name"]; ?></td>
                                     <td><?php echo $row["fav_count"]; ?></td>
                                     <td><?php echo $row["comments"]; ?></td>
-                                    <td><?php echo $row["comments"]; ?></td>
+                                    <td><?php echo $row["average_rating"]; ?></td>
 
                                 </tr>
                             <?php } ?>

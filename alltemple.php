@@ -57,7 +57,6 @@ if (isset($_POST["like"])) {
             margin-top: 1rem;
             display: flex;
             gap: 3.5rem;
-           
         }
 
         .class button {
@@ -65,7 +64,6 @@ if (isset($_POST["like"])) {
             background-color: white;
             font-size: 25px;
             color: #999;
-            
         }
 
         .class button:hover, .class button:checked~label {
@@ -73,11 +71,9 @@ if (isset($_POST["like"])) {
             background-color: white;
             font-size: 25px;
             color: red;
-            
         }
 
         .classbutton .btn-light {
-
             border: 1px solid black;
             color: black;
             border-radius: 5px;
@@ -91,8 +87,9 @@ if (isset($_POST["like"])) {
             color: #f8f9fa;
         }
 
-        
-
+        .hidden-row {
+            display: none; /* Hide extra rows initially */
+        }
     </style>
 </head>
 
@@ -108,18 +105,19 @@ if (isset($_POST["like"])) {
                 <!-- Single item -->
                 <div class="carousel-item active">
                     <div class="container">
-                        <div class="row">
-
+                        <div class="row" id="templesContainer">
                             <?php
                             $i = 0;
                             foreach ($data as $row) {
                                 $i++;
                                 $sql = "select * from gallery where temple_id = " . $row['id'] . " limit 1";
                                 $res = $con->query($sql);
-
                                 $img = $res->fetch_assoc();
+
+                                // Add the "hidden-row" class to rows beyond the first 2
+                                $hiddenClass = ($i > 8) ? 'hidden-row' : '';
                             ?>
-                                <div class="col-lg-3">
+                                <div class="col-lg-3 <?php echo $hiddenClass; ?>">
                                     <div class="card">
                                         <img
                                             src="admin/<?php echo $img['image_path']; ?>"
@@ -127,17 +125,12 @@ if (isset($_POST["like"])) {
                                         <div class="card-body">
                                             <h5 class="card-title"><b><?php echo $row["name"]; ?></b></h5>
                                             <p class="card-text">
-                                                Deity :<?php echo substr( $row["deity"],0,20). ".." ?>
+                                                Deity :<?php echo substr($row["deity"], 0, 20) . ".."; ?>
                                             </p>
                                             <div class="class">
                                                 <form action="alltemple.php" method="POST" name="like">
                                                     <input type="hidden" name="templeid" value="<?php echo $row["id"]; ?>" />
-
-
-                                                    <button type="submit" name="like" >❤</button>
-                                                
-
-
+                                                    <button type="submit" name="like">❤</button>
                                                 </form>
                                                 <div class="classbutton">
                                                     <a href='temples.php?id=<?php echo $row["id"]; ?>' data-mdb-ripple-init class='btn btn-light'>See More</a>
@@ -147,22 +140,43 @@ if (isset($_POST["like"])) {
                                     </div>
                                 </div>
                             <?php } ?>
-                            <div class="temple-button">
-                                <a href="alltemple.php" data-mdb-ripple-init class="btn btn-primary">Load More</a>
-                            </div>
+                        </div>
+                        <div class="temple-button">
+                            <a href="javascript:void(0);" id="loadMoreBtn" data-mdb-ripple-init class="btn btn-primary">Load More</a>
                         </div>
                     </div>
                 </div>
-
-                <!-- Inner -->
             </div>
+        </div>
     </section>
     <?php require_once 'footer.php'; ?>
 
     <!-- MDB -->
+   
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const loadMoreBtn = document.getElementById("loadMoreBtn");
+            const templesContainer = document.getElementById("templesContainer");
+            const hiddenRows = document.querySelectorAll(".hidden-row");
+            const templesPerClick = 4; // Number of temples to load per click
+            let currentIndex = 0;
 
-    
-    <script
+            loadMoreBtn.addEventListener("click", () => {
+                for (let i = currentIndex; i < currentIndex + templesPerClick; i++) {
+                    if (hiddenRows[i]) {
+                        hiddenRows[i].classList.remove("hidden-row"); // Show hidden temples
+                    }
+                }
+                currentIndex += templesPerClick;
+
+                // Hide the "Load More" button if all temples are shown
+                if (currentIndex >= hiddenRows.length) {
+                    loadMoreBtn.style.display = "none";
+                }
+            });
+        });
+    </script>
+     <script
         type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/8.1.0/mdb.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
