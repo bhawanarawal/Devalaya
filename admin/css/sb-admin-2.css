@@ -11285,6 +11285,12 @@ body.sidebar-toggled footer.sticky-footer {
   margin-right: 10px;
   position: relative;
   border: 1px solid darkblue;
+  margin-bottom: 1rem;
+  
+}
+.gallery .btn-light:hover{
+ background-color: dodgerblue;
+ color: white;
   
 }
 .galleryimage img{

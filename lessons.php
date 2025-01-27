@@ -130,6 +130,7 @@ if ($res->num_rows > 0) {
             justify-content: space-between;
             text-align: left;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            gap: 30px;
         }
         .quotecard:hover {
             transform: translateY(-5px);
@@ -147,6 +148,10 @@ if ($res->num_rows > 0) {
             height: 60px;
             border-radius: 50%;
             margin-right: 20px;
+        }
+        .quotecard-body{
+            color: #007bff;
+        
         }
         h1 .fa-om {
             color: #ff5722;

@@ -53,7 +53,7 @@ if ($eventres->num_rows > 0) {
       <div class="carousel-item active">
         <img src="images/home-3.webp" alt="...">
         <div class="carousel-caption ">
-          <h1><b>श्रीमद भागवत गीता</b></h1>
+          <h1><b>श्रीमद् भागवत गीता</b></h1>
           <p>“Believe me ! I am the only truth”</p>
         </div>
       </div>
@@ -61,7 +61,7 @@ if ($eventres->num_rows > 0) {
       <div class="carousel-item">
         <img src="images/home-4.webp" alt="...">
         <div class="carousel-caption">
-          <h1><b>BHAGAVAD GITA :</b></h1>
+          <h1><b>श्रीमद् भागवत गीता :</b></h1>
           <p>“You are only entitled to the action, never to its fruits.”</p>
         </div>
       </div>
