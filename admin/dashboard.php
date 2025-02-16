@@ -1,5 +1,12 @@
 <?php
 session_start();
+require '../vendor/autoload.php';
+$db = new PDO('mysql:host=localhost;dbname=devalaya_db', 'root', '');
+$auth = new \Delight\Auth\Auth($db);
+if (!$auth->isLoggedIn()) {
+    header("location:/devalaya/auth/login.php");
+}
+
 include('connection.php');
 $result = $con->query("select count(*) as 'total' from temple");
 $row = mysqli_fetch_array($result);
@@ -28,7 +35,7 @@ $eventscount = $rowevents['total'];
 //             (SELECT COUNT(*) FROM favourite f WHERE f.temple_id = t.id) AS fav_count, 
 //             (SELECT COUNT(*) FROM reviews r WHERE r.temple_id = t.id) AS comments ,
 //         FROM temple t";
-$sql="SELECT 
+$sql = "SELECT 
             t.name AS temple_name, 
             (SELECT COUNT(*) FROM favourite f WHERE f.temple_id = t.id) AS fav_count, 
             (SELECT COUNT(*) FROM reviews r WHERE r.temple_id = t.id) AS comments,
@@ -169,7 +176,7 @@ if ($res->num_rows > 0) {
                                             <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $eventscount; ?></div>
                                         </div>
                                         <div class="col-auto">
-                                        <i class="fa-solid fa-calendar-days fa-2x"></i>
+                                            <i class="fa-solid fa-calendar-days fa-2x"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -179,9 +186,9 @@ if ($res->num_rows > 0) {
 
                     <!-- Content Row -->
 
-                   
-                        <!-- Pie Chart -->
-                       
+
+                    <!-- Pie Chart -->
+
 
                     <table class="table table-bordered ">
                         <thead class="table-success text-black">

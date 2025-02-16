@@ -170,7 +170,7 @@ if ($eventres->num_rows > 0) {
           <h2 class="eventscard-title"><i class="fa-regular fa-calendar-days fa-2x"></i> :<b><?php echo $row["event_date"]; ?></b></h2>
           <p class="eventscard-text"><b>Contact:</b><?php echo $row["contact"]; ?></p>
           <!-- <p class="eventscard-text"><?php echo substr($row["details"], 0, 50) . '...'; ?></p> -->
-          <a href="temples.php?id=<?php echo $row["id"]; ?>" class="btn btn-light">See More</a>
+          
         </div>
       </div>
     <?php } ?>

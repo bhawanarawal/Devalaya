@@ -105,7 +105,7 @@
     <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             
-            <a class="dropdown-item" href="/devalaya/auth/roleassignment.php">Role Assignment</a>
+            <a class="dropdown-item" href="/devalaya/admin/roleassignment.php">Role Assignment</a>
         </div>
     </div>
 </li>

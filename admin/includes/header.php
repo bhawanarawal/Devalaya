@@ -7,7 +7,7 @@
 </button>
 
 <!-- Topbar Search -->
-<h4>Welcome !</h4>
+
 
 <!-- Topbar Navbar -->
 <ul class="navbar-nav ml-auto">
@@ -52,7 +52,7 @@
             
             
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+            <a class="dropdown-item" href="/devalaya/auth/logout.php" >
                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                 Logout
             </a>
