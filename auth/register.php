@@ -1,34 +1,36 @@
-<?php session_start(); ?>
 <?php
-include('../admin/connection.php');
+session_start();
+include('../admin/connection.php'); 
 require '../vendor/autoload.php';
+
+
 $db = new PDO('mysql:host=localhost;dbname=devalaya_db', 'root', '');
 $auth = new \Delight\Auth\Auth($db);
 
 if (isset($_POST["register"])) {
     try {
-        $userId = $auth->register($_POST['email'], $_POST['password'], $_POST['username'], function ($selector, $token) {
-            echo 'Send ' . $selector . ' and ' . $token . ' to the user (e.g. via email)';
-            echo '  For emails, consider using the mail(...) function, Symfony Mailer, Swiftmailer, PHPMailer, etc.';
-            echo '  For SMS, consider using a third-party service and a compatible SDK';
-        });
-    
-        echo 'We have signed up a new user with the ID ' . $userId;
+      
+        $userId = $auth->register($_POST['email'], $_POST['password'], $_POST['username']);
+
+        // Registration successful
+        $_SESSION['success_message'] = 'You are signed up! Welcome to the platform.';
+
+        header('Location: login.php');
+       
     }
     catch (\Delight\Auth\InvalidEmailException $e) {
-        die('Invalid email address');
+        echo '<div class="alert alert-danger">Invalid email address.</div>';
     }
     catch (\Delight\Auth\InvalidPasswordException $e) {
-        die('Invalid password');
+        echo '<div class="alert alert-danger">Invalid password.</div>';
     }
     catch (\Delight\Auth\UserAlreadyExistsException $e) {
-        die('User already exists');
+        echo '<div class="alert alert-danger">User already exists.</div>';
     }
     catch (\Delight\Auth\TooManyRequestsException $e) {
-        die('Too many requests');
+        echo '<div class="alert alert-danger">Too many requests. Please try again later.</div>';
     }
 }
-
 ?>
 
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -71,7 +73,7 @@ if (isset($_POST["register"])) {
         <form method="POST" action="#" method="POST" name="register" class="p-3 mt-3">
         <div class="form-field d-flex align-items-center">
                 <span class="fas fa-user"></span>
-                <input type="text" name="username" placeholder="Enter Your name">
+                <input type="text" name="username" placeholder="Enter Your Full Name">
             </div>
             <div class="form-field d-flex align-items-center">
                 <span class="fas fa-envelope"></span>

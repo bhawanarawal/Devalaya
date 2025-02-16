@@ -113,7 +113,8 @@ color: #03A9F4;
 }
 
 .wrapper .btn:hover {
-    background-color: red;
+    background-color:black;
+}
 
     .wrapper a {
         text-decoration: none;
@@ -131,4 +132,3 @@ color: #03A9F4;
             padding: 40px 15px 15px 15px;
         }
     }
-}

@@ -386,6 +386,11 @@ margin-left: 2.5rem;
 
 
 
+
+
+
+
+
 .two-column-list {
   -moz-column-count: 2;
   -moz-column-gap: 15px;
@@ -479,4 +484,15 @@ border: 1px solid black;
 .prev-btn:hover,
 .next-btn:hover {
   background-color: dodgerblue;
+}
+.logout {
+  color: red;
+  margin-top: .5rem;
+}
+.username{
+ color:red;
+margin-top: .5rem;
+margin-right:1rem;
+text-transform: capitalize;
+
 }

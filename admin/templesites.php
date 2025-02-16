@@ -70,7 +70,7 @@ $data=[];
                                       <th>Details</th>
                                       <th>Address</th>
                                       <th>Deity</th>
-                                      <th>Construction Year</th>
+                                      <th>Origins</th>
                                       <th colspan="2">Action</th>
                                     </tr>
                                     </thead>
@@ -81,7 +81,7 @@ $data=[];
                                       <th>Details</th>
                                       <th>Address</th>
                                       <th>Deity</th>
-                                      <th>Construction Year</th>
+                                      <th>Origins</th>
                                       <th colspan="2">Action</th>
                                     </tr>
                                     </tfoot>
@@ -94,10 +94,10 @@ $data=[];
                                     <tr>
                                       <td><?php echo $i; ?></td>
                                       <td><?php echo $row["name"]; ?></td>
-                                      <td><?php echo $row["details"]; ?></td>
+                                      <td><?php echo substr($row["details"],0,100). "..."; ?></td>
                                       <td><?php echo $row["address"]; ?></td>
                                       <td><?php echo $row["deity"]; ?></td>
-                                      <td><?php echo $row["made_year"]; ?></td>
+                                      <td><?php echo substr($row["made_year"],0,100). "..."; ?></td>
                                       <td><a href='edittemple.php?id=<?php echo $row["id"]; ?>' class='btn-blue'>Edit</a></td>
                                       <td><a href='deletetemple.php?id=<?php echo $row["id"]; ?>' onclick='return confirm("Are You Sure?")'  class='btn-red'>Delete</a></td>
                                     </tr>

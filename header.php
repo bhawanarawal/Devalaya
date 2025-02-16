@@ -1,4 +1,4 @@
-<?php require_once "config.php"; 
+<?php require_once "config.php";
 require './vendor/autoload.php';
 $db = new PDO('mysql:host=localhost;dbname=devalaya_db', 'root', '');
 $auth = new \Delight\Auth\Auth($db);
@@ -53,22 +53,25 @@ $auth = new \Delight\Auth\Auth($db);
               <a class="nav-link mx-lg-2" href="contact.php">Contact</a>
             </li>
             <?php
-      if ($auth->isLoggedIn()) {
-      ?>
-        <a><?php echo $auth->getUsername(); ?></a>
-        <form method="POST">
-          <a href="auth/logout.php" type="submit"  class="btn btn-danger" name="logout" >Logout</a>
-          </form>
-      <?php } else {
-      ?>
-        <a href="auth/login.php" class="login"><i class="fa-solid fa-user"></i></a>
-      <?php }
-      ?>
+            if ($auth->isLoggedIn()) {
+            ?>
+            <div class="username">
+            Welcome !
+              <a><?php  echo  $auth->getUsername(); ?></a>
+              </div>
+              <form method="POST">
+                <a href="auth/logout.php" type="submit" class="logout"><i class="fa-solid fa-right-from-bracket"></i></a>
+              </form>
+            <?php } else {
+            ?>
+              <a href="auth/login.php" class="login"><i class="fa-solid fa-user"></i></a>
+            <?php }
+            ?>
 
           </ul>
         </div>
       </div>
-      
+
       <button class="navbar-toggler pe-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>

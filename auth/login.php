@@ -1,4 +1,9 @@
 <?php
+session_start();
+if (isset($_SESSION['success_message'])) {
+    echo '<div class="alert alert-success">' . $_SESSION['success_message'] . '</div>';
+    unset($_SESSION['success_message']); // Clear the message after displaying it
+}
 require '../vendor/autoload.php';
 $db = new PDO('mysql:host=localhost;dbname=devalaya_db', 'root', '');
 $auth = new \Delight\Auth\Auth($db);
@@ -59,7 +64,7 @@ if (isset($_POST['login'])) {
             </div>
             <button class="btn mt-3" type="submit" name="login">Login</button>
             <div class="form-group d-flex">
-                <a href="#">Forgot Password ?</a>
+                <a href="forgotpassword.php">Forgot Password ?</a>
             </div>
         </form>
         <p class="text-center">Not a Member? <a data-toggle="tab" href="register.php">Sign Up</a></p>
