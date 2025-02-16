@@ -9,19 +9,18 @@ require '../vendor/autoload.php';
 $db = new PDO('mysql:host=localhost;dbname=devalaya_db', 'root', '');
 $auth = new \Delight\Auth\Auth($db);
 
-
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-// Initialize PHP-Auth
-
+$emailSent = false;
+$errorMessage = null;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
 
     try {
         // Generate a reset token
-        $resetToken = $auth->forgotPassword($email, function ($selector, $token) {
+        $resetToken = $auth->forgotPassword($email, function ($selector, $token) use ($email) {
             
             $mail = new PHPMailer(true);
 
@@ -36,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Recipients
             $mail->setFrom('bhwbi.rawal@gmail.com', 'Password Reset');
-            $mail->addAddress($_POST['email']);
+            $mail->addAddress($email);
 
             // Content
             $mail->isHTML(true);
@@ -44,21 +43,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $mail->Body = "Click the link to reset your password: <a href='http://localhost/devalaya/auth/reset.php?selector=$selector&token=$token'>Reset Password</a>";
 
             $mail->send();
-            echo '<div class="alert alert-success">Reset link has been sent to '. $_POST['email'] .'.</div>';
-        },3600);
-
-        // Send the reset link via email
+            $emailSent = true;
+        }, 3600);
 
     } catch (\Delight\Auth\InvalidEmailException $e) {
-        echo '<div class="alert alert-danger">Invalid email address.</div>';
+        $errorMessage = 'Invalid email address.';
     } catch (\Delight\Auth\EmailNotVerifiedException $e) {
-        echo '<div class="alert alert-danger">Email not verified.</div>';
+        $errorMessage = 'Email not verified.';
     } catch (\Delight\Auth\ResetDisabledException $e) {
-        echo '<div class="alert alert-danger">Password reset is disabled.</div>';
+        $errorMessage = 'Password reset is disabled.';
     } catch (\Delight\Auth\TooManyRequestsException $e) {
-        echo '<div class="alert alert-danger">Too many requests. Please try again later.</div>';
+        $errorMessage = 'Too many requests. Please try again later.';
     } catch (Exception $e) {
-        echo '<div class="alert alert-danger">Error sending email: ' . $e->getMessage() . '</div>';
+        $errorMessage = 'Error sending email: ' . $e->getMessage();
     }
 }
 ?>
@@ -109,37 +106,50 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         .card-body {
             padding: 1.5rem;
         }
+
+        .alert {
+            margin-bottom: 1rem;
+        }
     </style>
 </head>
 
 <body>
     <div class="card border border-light-subtle rounded-3 shadow-sm">
         <div class="card-body p-3 p-md-4">
-            <div class="text-center mb-3">
-                <h2>Password Recover</h2>
-            </div>
-            <h2 class="fs-6 fw-normal text-center text-secondary mb-4">Provide the email address associated with your account to recover your password.</h2>
-            <form action="" method="POST">
-                <div class="row gy-2 overflow-hidden">
-                    <div class="col-12">
-                        <div class="form-floating">
-                            <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com" required>
-                            <label for="email" class="form-label">Email</label>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="d-grid my-3">
-                            <button class="btn btn-primary btn-lg" type="submit">Reset Password</button>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="d-flex gap-2 justify-content-between">
-                            <a href="login.php" class="link-primary text-decoration-none">Log In</a>
-                            <a href="register.php" class="link-primary text-decoration-none">Register</a>
-                        </div>
-                    </div>
+            <?php if ($emailSent): ?>
+                <div class="alert alert-success">Reset link has been sent to <?php echo htmlspecialchars($email); ?>.</div>
+            <?php else: ?>
+                <!-- Display error message at the top of the form -->
+                <?php if ($errorMessage): ?>
+                    <div class="alert alert-danger"><?php echo htmlspecialchars($errorMessage); ?></div>
+                <?php endif; ?>
+
+                <div class="text-center mb-3">
+                    <h2>Password Recover</h2>
                 </div>
-            </form>
+                <h2 class="fs-6 fw-normal text-center text-secondary mb-4">Provide the email address associated with your account to recover your password.</h2>
+                <form action="" method="POST">
+                    <div class="row gy-2 overflow-hidden">
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com" required>
+                                <label for="email" class="form-label">Email</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="d-grid my-3">
+                                <button class="btn btn-primary btn-lg" type="submit">Reset Password</button>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="d-flex gap-2 justify-content-between">
+                                <a href="login.php" class="link-primary text-decoration-none">Log In</a>
+                                <a href="register.php" class="link-primary text-decoration-none">Register</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            <?php endif; ?>
         </div>
     </div>
 </body>

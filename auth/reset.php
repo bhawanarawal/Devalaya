@@ -26,22 +26,91 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo 'Too many requests. Please try again later.';
     }
 }
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Reset Password</title>
+    <title>Forgot Password</title>
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f8f9fa;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+        }
+
+        .fs-6 {
+            font-size: 3rem;
+        }
+
+        .form-floating input,
+        .form-floating label {
+            font-size: 0.9rem;
+        }
+
+        .btn-lg {
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .alert {
+            margin-bottom: 1rem;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Reset Password</h1>
-    <form method="POST">
-      
-        <label for="new_password">New Password:</label>
-        <input type="password" id="new_password" name="new_password" required>
-        <button type="submit">Reset Password</button>
-    </form>
+    <div class="card border border-light-subtle rounded-3 shadow-sm">
+        <div class="card-body p-3 p-md-4">
+            
+
+                <div class="text-center mb-3">
+                    <h2>Reset Password </h2>
+                </div>
+                
+                <form action="" method="POST">
+                    <div class="row gy-2 overflow-hidden">
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <input type="password" class="form-control" name="new_password" id="new_password" required>
+                                <label for="new_password" class="form-label">New Password</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="d-grid my-3">
+                                <button class="btn btn-primary btn-lg" type="submit">Reset Password</button>
+                            </div>
+                        </div>
+                        
+                        </div>
+                    </div>
+                </form>
+        </div>
+    </div>
 </body>
+
 </html>
+
+

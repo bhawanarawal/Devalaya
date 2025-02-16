@@ -169,7 +169,7 @@ if ($eventres->num_rows > 0) {
           <h5 class="eventscard-title"><b>Event Name:<?php echo $row["name"]; ?></b></h5>
           <h2 class="eventscard-title"><i class="fa-regular fa-calendar-days fa-2x"></i> :<b><?php echo $row["event_date"]; ?></b></h2>
           <p class="eventscard-text"><b>Contact:</b><?php echo $row["contact"]; ?></p>
-          <!-- <p class="eventscard-text"><?php echo substr($row["details"], 0, 50) . '...'; ?></p> -->
+          <p class="eventscard-text"><b>About:</b><?php echo substr($row["details"], 0, 300) . '...'; ?></p>
           
         </div>
       </div>
