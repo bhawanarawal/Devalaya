@@ -4,11 +4,12 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-include('../admin/connection.php'); 
+include('../admin/connection.php');
 require '../vendor/autoload.php';
 $db = new PDO('mysql:host=localhost;dbname=devalaya_db', 'root', '');
 $auth = new \Delight\Auth\Auth($db);
-use Delight\Auth\Auth;
+
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -20,31 +21,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     try {
         // Generate a reset token
-        $resetToken = $auth->forgotPassword($email);
+        $resetToken = $auth->forgotPassword($email, function ($selector, $token) {
+            
+            $mail = new PHPMailer(true);
+
+            // Server settings
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com'; // Replace with your SMTP server (e.g., smtp.gmail.com for Gmail)
+            $mail->SMTPAuth = true;
+            $mail->Username = 'bhwbi.rawal@gmail.com'; // Replace with your email
+            $mail->Password = 'ycyx lxvn rxhu avgt'; // Replace with your app password
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Use TLS
+            $mail->Port = 587; // Port for TLS
+
+            // Recipients
+            $mail->setFrom('bhwbi.rawal@gmail.com', 'Password Reset');
+            $mail->addAddress($_POST['email']);
+
+            // Content
+            $mail->isHTML(true);
+            $mail->Subject = 'Password Reset Request';
+            $mail->Body = "Click the link to reset your password: <a href='http://localhost/devalaya/auth/reset.php?selector=$selector&token=$token'>Reset Password</a>";
+
+            $mail->send();
+            echo '<div class="alert alert-success">Reset link has been sent to '. $_POST['email'] .'.</div>';
+        },3600);
 
         // Send the reset link via email
-        $mail = new PHPMailer(true);
 
-        // Server settings
-        $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com'; // Replace with your SMTP server (e.g., smtp.gmail.com for Gmail)
-        $mail->SMTPAuth = true;
-        $mail->Username = 'bhwbi.rawal@gmail.com'; // Replace with your email
-        $mail->Password = 'ycyx lxvn rxhu avgt'; // Replace with your app password
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Use TLS
-        $mail->Port = 587; // Port for TLS
-
-        // Recipients
-        $mail->setFrom('bhwbi.rawal@gmail.com', 'Password Reset');
-        $mail->addAddress($email);
-
-        // Content
-        $mail->isHTML(true);
-        $mail->Subject = 'Password Reset Request';
-        $mail->Body = "Click the link to reset your password: <a href='http://localhost/devalaya/auth/reset.php?token=$resetToken'>Reset Password</a>";
-
-        $mail->send();
-        echo '<div class="alert alert-success">Reset link has been sent to your email.</div>';
     } catch (\Delight\Auth\InvalidEmailException $e) {
         echo '<div class="alert alert-danger">Invalid email address.</div>';
     } catch (\Delight\Auth\EmailNotVerifiedException $e) {
@@ -60,30 +64,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Forgot Password</title>
     <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <style>
-        html, body {
+        html,
+        body {
             height: 100%;
-            margin: 0; 
+            margin: 0;
         }
 
         body {
             display: flex;
-            justify-content: center; 
-            align-items: center; 
-            background-color: #f8f9fa; 
+            justify-content: center;
+            align-items: center;
+            background-color: #f8f9fa;
         }
 
         .card {
-            width: 100%; 
-            max-width: 400px; 
+            width: 100%;
+            max-width: 400px;
         }
 
         h2 {
-            font-size: 1.5rem; 
+            font-size: 1.5rem;
         }
 
         .fs-6 {
@@ -92,19 +98,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         .form-floating input,
         .form-floating label {
-            font-size: 0.9rem; 
+            font-size: 0.9rem;
         }
 
         .btn-lg {
             font-size: 0.9rem;
-            padding: 0.5rem 1rem; 
+            padding: 0.5rem 1rem;
         }
 
         .card-body {
-            padding: 1.5rem; 
+            padding: 1.5rem;
         }
     </style>
 </head>
+
 <body>
     <div class="card border border-light-subtle rounded-3 shadow-sm">
         <div class="card-body p-3 p-md-4">
@@ -112,7 +119,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <h2>Password Recover</h2>
             </div>
             <h2 class="fs-6 fw-normal text-center text-secondary mb-4">Provide the email address associated with your account to recover your password.</h2>
-            <form action="reset.php" method="POST">
+            <form action="" method="POST">
                 <div class="row gy-2 overflow-hidden">
                     <div class="col-12">
                         <div class="form-floating">
@@ -136,4 +143,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
 </body>
+
 </html>

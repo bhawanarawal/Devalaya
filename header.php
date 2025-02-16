@@ -56,7 +56,7 @@ $auth = new \Delight\Auth\Auth($db);
             if ($auth->isLoggedIn()) {
             ?>
             <div class="username">
-            Welcome !
+            Hello ,
               <a><?php  echo  $auth->getUsername(); ?></a>
               </div>
               <form method="POST">

@@ -7,11 +7,12 @@ $auth = new \Delight\Auth\Auth($db);
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $token = $_POST['token'];
+    
     $newPassword = $_POST['new_password'];
 
     try {
-        $auth->resetPassword($token, $newPassword);
+       
+        $auth->resetPassword($_GET['selector'],$_GET['token'], $newPassword);
         echo 'Password has been reset successfully.';
     } catch (\Delight\Auth\InvalidSelectorTokenPairException $e) {
         echo 'Invalid token.';
@@ -26,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-$token = $_GET['token'] ?? '';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,7 +38,7 @@ $token = $_GET['token'] ?? '';
 <body>
     <h1>Reset Password</h1>
     <form method="POST">
-        <input type="hidden" name="token" value="<?php echo htmlspecialchars($token); ?>">
+      
         <label for="new_password">New Password:</label>
         <input type="password" id="new_password" name="new_password" required>
         <button type="submit">Reset Password</button>

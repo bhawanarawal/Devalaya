@@ -11,7 +11,11 @@ if (isset($_POST['login'])) {
 
     try {
         $auth->login($_POST['email'], $_POST['password']);
-        header("location:../home.php");
+        if ($auth->hasRole(\Delight\Auth\Role::SUPER_ADMIN)) {
+            header("location:../admin/dashboard.php");
+        } else {
+            header("location:../home.php");
+        }
     } catch (\Delight\Auth\InvalidEmailException $e) {
         die('Wrong email address');
     } catch (\Delight\Auth\InvalidPasswordException $e) {
@@ -23,6 +27,7 @@ if (isset($_POST['login'])) {
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -44,32 +49,32 @@ if (isset($_POST['login'])) {
 </head>
 
 <body>
-        <div class="content">
-    <div class="wrapper">
-        <div class="logo">
-            <img src="ommm.jpg" alt="">
-        </div>
-        <div class="text-center mt-4 name">
-            Welcome
-        </div>
-        <form method="POST" action="" class="p-3 mt-3">
-            <div class="form-field d-flex align-items-center">
-                <span class="fas fa-user"></span>
-                <input type="text" name="email" placeholder="Enter Your Email">
+    <div class="content">
+        <div class="wrapper">
+            <div class="logo">
+                <img src="ommm.jpg" alt="">
             </div>
-            <div class="form-field d-flex align-items-center">
-                <span class="fas fa-key"></span>
-                <input type="password" name="password" placeholder="Enter Your Password">
+            <div class="text-center mt-4 name">
+                Welcome
+            </div>
+            <form method="POST" action="" class="p-3 mt-3">
+                <div class="form-field d-flex align-items-center">
+                    <span class="fas fa-user"></span>
+                    <input type="text" name="email" placeholder="Enter Your Email">
+                </div>
+                <div class="form-field d-flex align-items-center">
+                    <span class="fas fa-key"></span>
+                    <input type="password" name="password" placeholder="Enter Your Password">
 
-            </div>
-            <button class="btn mt-3" type="submit" name="login">Login</button>
-            <div class="form-group d-flex">
-                <a href="forgotpassword.php">Forgot Password ?</a>
-            </div>
-        </form>
-        <p class="text-center">Not a Member? <a data-toggle="tab" href="register.php">Sign Up</a></p>
-    </div>
-    <div class="side-image">
+                </div>
+                <button class="btn mt-3" type="submit" name="login">Login</button>
+                <div class="form-group d-flex">
+                    <a href="forgotpassword.php">Forgot Password ?</a>
+                </div>
+            </form>
+            <p class="text-center">Not a Member? <a data-toggle="tab" href="register.php">Sign Up</a></p>
+        </div>
+        <div class="side-image">
             <img src="log.jpg">
         </div>
     </div>
