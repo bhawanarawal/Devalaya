@@ -4,26 +4,27 @@ require '../vendor/autoload.php';
 $db = new PDO('mysql:host=localhost;dbname=devalaya_db', 'root', '');
 $auth = new \Delight\Auth\Auth($db);
 
-
+$message = null;
+$success = false;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    
     $newPassword = $_POST['new_password'];
 
     try {
-       
-        $auth->resetPassword($_GET['selector'],$_GET['token'], $newPassword);
-        echo 'Password has been reset successfully.';
+        $auth->resetPassword($_GET['selector'], $_GET['token'], $newPassword);
+        $message = 'Password has been reset successfully. Redirecting to login...';
+        $success = true;
+        echo "<script>setTimeout(function(){ window.location.href = 'login.php'; }, 3000);</script>";
     } catch (\Delight\Auth\InvalidSelectorTokenPairException $e) {
-        echo 'Invalid token.';
+        $message = 'Invalid token.';
     } catch (\Delight\Auth\TokenExpiredException $e) {
-        echo 'Token has expired.';
+        $message = 'Token has expired.';
     } catch (\Delight\Auth\ResetDisabledException $e) {
-        echo 'Password reset is disabled.';
+        $message = 'Password reset is disabled.';
     } catch (\Delight\Auth\InvalidPasswordException $e) {
-        echo 'Invalid password.';
+        $message = 'Invalid password.';
     } catch (\Delight\Auth\TooManyRequestsException $e) {
-        echo 'Too many requests. Please try again later.';
+        $message = 'Too many requests. Please try again later.';
     }
 }
 ?>
@@ -39,44 +40,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         body {
             height: 100%;
             margin: 0;
-        }
-
-        body {
             display: flex;
             justify-content: center;
             align-items: center;
             background-color: #f8f9fa;
         }
-
         .card {
             width: 100%;
             max-width: 400px;
-        }
-
-        h2 {
-            font-size: 1.5rem;
-        }
-
-        .fs-6 {
-            font-size: 3rem;
-        }
-
-        .form-floating input,
-        .form-floating label {
-            font-size: 0.9rem;
-        }
-
-        .btn-lg {
-            font-size: 0.9rem;
-            padding: 0.5rem 1rem;
-        }
-
-        .card-body {
-            padding: 1.5rem;
-        }
-
-        .alert {
-            margin-bottom: 1rem;
         }
     </style>
 </head>
@@ -84,12 +55,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <div class="card border border-light-subtle rounded-3 shadow-sm">
         <div class="card-body p-3 p-md-4">
-            
-
-                <div class="text-center mb-3">
-                    <h2>Reset Password </h2>
+            <?php if ($message): ?>
+                <div class="alert <?php echo $success ? 'alert-success' : 'alert-danger'; ?> text-center">
+                    <?php echo htmlspecialchars($message); ?>
                 </div>
-                
+            <?php endif; ?>
+            <?php if (!$success): ?>
+                <div class="text-center mb-3">
+                    <h2>Reset Password</h2>
+                </div>
                 <form action="" method="POST">
                     <div class="row gy-2 overflow-hidden">
                         <div class="col-12">
@@ -103,14 +77,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <button class="btn btn-primary btn-lg" type="submit">Reset Password</button>
                             </div>
                         </div>
-                        
-                        </div>
                     </div>
                 </form>
+            <?php endif; ?>
         </div>
     </div>
 </body>
-
 </html>
-
-

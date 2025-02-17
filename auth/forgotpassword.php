@@ -20,18 +20,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     try {
         // Generate a reset token
-        $resetToken = $auth->forgotPassword($email, function ($selector, $token) use ($email) {
+        $resetToken = $auth->forgotPassword($email, function ($selector, $token) use ($email, &$emailSent) {
             
             $mail = new PHPMailer(true);
 
             // Server settings
             $mail->isSMTP();
-            $mail->Host = 'smtp.gmail.com'; // Replace with your SMTP server (e.g., smtp.gmail.com for Gmail)
+            $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
-            $mail->Username = 'bhwbi.rawal@gmail.com'; // Replace with your email
-            $mail->Password = 'ycyx lxvn rxhu avgt'; // Replace with your app password
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Use TLS
-            $mail->Port = 587; // Port for TLS
+            $mail->Username = 'bhwbi.rawal@gmail.com'; 
+            $mail->Password = 'ycyx lxvn rxhu avgt'; 
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->Port = 587;
 
             // Recipients
             $mail->setFrom('bhwbi.rawal@gmail.com', 'Password Reset');
@@ -45,7 +45,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $mail->send();
             $emailSent = true;
         }, 3600);
-
     } catch (\Delight\Auth\InvalidEmailException $e) {
         $errorMessage = 'Invalid email address.';
     } catch (\Delight\Auth\EmailNotVerifiedException $e) {
@@ -67,48 +66,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Forgot Password</title>
     <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <style>
-        html,
-        body {
+        html, body {
             height: 100%;
             margin: 0;
-        }
-
-        body {
             display: flex;
             justify-content: center;
             align-items: center;
             background-color: #f8f9fa;
         }
-
         .card {
             width: 100%;
             max-width: 400px;
-        }
-
-        h2 {
-            font-size: 1.5rem;
-        }
-
-        .fs-6 {
-            font-size: 0.9rem;
-        }
-
-        .form-floating input,
-        .form-floating label {
-            font-size: 0.9rem;
-        }
-
-        .btn-lg {
-            font-size: 0.9rem;
-            padding: 0.5rem 1rem;
-        }
-
-        .card-body {
-            padding: 1.5rem;
-        }
-
-        .alert {
-            margin-bottom: 1rem;
         }
     </style>
 </head>
@@ -117,17 +85,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="card border border-light-subtle rounded-3 shadow-sm">
         <div class="card-body p-3 p-md-4">
             <?php if ($emailSent): ?>
-                <div class="alert alert-success">An email has been sent to <?php echo htmlspecialchars($email); ?>. Please check your inbox to reset your password.</div>
+                <div class="alert alert-success text-center">
+                    An email has been sent to <strong><?php echo htmlspecialchars($email); ?></strong>. 
+                    Please check your inbox to reset your password.
+                </div>
+            <?php elseif ($errorMessage): ?>
+                <div class="alert alert-danger text-center"><?php echo htmlspecialchars($errorMessage); ?></div>
             <?php else: ?>
-                <!-- Display error message at the top of the form -->
-                <?php if ($errorMessage): ?>
-                    <div class="alert alert-danger"><?php echo htmlspecialchars($errorMessage); ?></div>
-                <?php endif; ?>
-
                 <div class="text-center mb-3">
                     <h2>Password Recover</h2>
                 </div>
-                <h2 class="fs-6 fw-normal text-center text-secondary mb-4">Provide the email address associated with your account to recover your password.</h2>
+                <h2 class="fs-6 fw-normal text-center text-secondary mb-4">
+                    Provide the email address associated with your account to recover your password.
+                </h2>
                 <form action="" method="POST">
                     <div class="row gy-2 overflow-hidden">
                         <div class="col-12">
