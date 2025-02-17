@@ -155,7 +155,7 @@ if ($eventres->num_rows > 0) {
 </section>
 <section class="section-events">
   <h3><i class="fa-solid fa-om"></i>Festivals<i class="fa-solid fa-om"></i></h3>
-  <h1><b>Some Events</b></h1>
+  <h1><b>Latest Events</b></h1>
   <div class="eventsslider-container">
   <div class="eventsslider">
     <?php
@@ -166,10 +166,10 @@ if ($eventres->num_rows > 0) {
       <div class="eventscard" >
 
         <div class="eventscard-body">
-          <h5 class="eventscard-title"><b>Event Name:<?php echo $row["name"]; ?></b></h5>
-          <h2 class="eventscard-title"><i class="fa-regular fa-calendar-days fa-2x"></i> :<b><?php echo $row["event_date"]; ?></b></h2>
-          <p class="eventscard-text"><b>Contact:</b><?php echo $row["contact"]; ?></p>
-          <p class="eventscard-text"><b>About:</b><?php echo substr($row["details"], 0, 300) . '...'; ?></p>
+          <h5 class="eventscard-title"><b><?php echo $row["name"]; ?></b></h5>
+          <h2 class="eventscard-title"><i class="fa-regular fa-calendar-days fa-2x"></i>  <b><?php echo date_format(date_create($row["event_date"]),"M d"); ?></b></h2>
+          <h4 class="eventscard-text"><b>Contact:</b><?php echo $row["contact"]; ?></h4>
+          <p class="eventscard-text"><b>About:</b><?php echo substr($row["details"], 0, 500) . '...'; ?></p>
           
         </div>
       </div>

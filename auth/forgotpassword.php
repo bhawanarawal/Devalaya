@@ -117,7 +117,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="card border border-light-subtle rounded-3 shadow-sm">
         <div class="card-body p-3 p-md-4">
             <?php if ($emailSent): ?>
-                <div class="alert alert-success">Reset link has been sent to <?php echo htmlspecialchars($email); ?>.</div>
+                <div class="alert alert-success">An email has been sent to <?php echo htmlspecialchars($email); ?>. Please check your inbox to reset your password.</div>
             <?php else: ?>
                 <!-- Display error message at the top of the form -->
                 <?php if ($errorMessage): ?>

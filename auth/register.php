@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('../admin/connection.php'); 
+include('../admin/connection.php');
 require '../vendor/autoload.php';
 
 
@@ -9,25 +9,20 @@ $auth = new \Delight\Auth\Auth($db);
 
 if (isset($_POST["register"])) {
     try {
-      
-        $userId = $auth->register($_POST['email'], $_POST['password'], $_POST['username']);
 
+        $userId = $auth->register($_POST['email'], $_POST['password'], $_POST['username']);
+        $auth->admin()->addRoleForUserById($userId, \Delight\Auth\Role::SUBSCRIBER);
         // Registration successful
         $_SESSION['success_message'] = 'You are signed up! Welcome to the platform.';
 
         header('Location: login.php');
-       
-    }
-    catch (\Delight\Auth\InvalidEmailException $e) {
+    } catch (\Delight\Auth\InvalidEmailException $e) {
         echo '<div class="alert alert-danger">Invalid email address.</div>';
-    }
-    catch (\Delight\Auth\InvalidPasswordException $e) {
+    } catch (\Delight\Auth\InvalidPasswordException $e) {
         echo '<div class="alert alert-danger">Invalid password.</div>';
-    }
-    catch (\Delight\Auth\UserAlreadyExistsException $e) {
+    } catch (\Delight\Auth\UserAlreadyExistsException $e) {
         echo '<div class="alert alert-danger">User already exists.</div>';
-    }
-    catch (\Delight\Auth\TooManyRequestsException $e) {
+    } catch (\Delight\Auth\TooManyRequestsException $e) {
         echo '<div class="alert alert-danger">Too many requests. Please try again later.</div>';
     }
 }
@@ -62,36 +57,36 @@ if (isset($_POST["register"])) {
 
 <body>
 
-<div class="content">
-<div class="wrapper">
-        <div class="logo">
-            <img src="ommm.jpg" alt="">
-        </div>
-        <div class="text-center mt-4 name">
-            SignUp
-        </div>
-        <form method="POST" action="#" method="POST" name="register" class="p-3 mt-3">
-        <div class="form-field d-flex align-items-center">
-                <span class="fas fa-user"></span>
-                <input type="text" name="username" placeholder="Enter Your Full Name">
+    <div class="content">
+        <div class="wrapper">
+            <div class="logo">
+                <img src="ommm.jpg" alt="">
             </div>
-            <div class="form-field d-flex align-items-center">
-                <span class="fas fa-envelope"></span>
-                <input type="text" name="email" placeholder="Enter Your Email">
+            <div class="text-center mt-4 name">
+                SignUp
             </div>
+            <form method="POST" action="#" method="POST" name="register" class="p-3 mt-3">
+                <div class="form-field d-flex align-items-center">
+                    <span class="fas fa-user"></span>
+                    <input type="text" name="username" placeholder="Enter Your Full Name">
+                </div>
+                <div class="form-field d-flex align-items-center">
+                    <span class="fas fa-envelope"></span>
+                    <input type="text" name="email" placeholder="Enter Your Email">
+                </div>
 
-            <div class="form-field d-flex align-items-center">
-                <span class="fas fa-key"></span>
-                <input type="password" name="password" placeholder="Enter Your Password">
-               
-            </div>
-            <button class="btn mt-3" type="submit" name="register">Signup</button>
-        </form>
-    </div>
-    <div class="side-image">
+                <div class="form-field d-flex align-items-center">
+                    <span class="fas fa-key"></span>
+                    <input type="password" name="password" placeholder="Enter Your Password">
+
+                </div>
+                <button class="btn mt-3" type="submit" name="register">Signup</button>
+            </form>
+        </div>
+        <div class="side-image">
             <img src="log.jpg">
         </div>
-</div>
+    </div>
 </body>
 
 

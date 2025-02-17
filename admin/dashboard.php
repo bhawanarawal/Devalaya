@@ -6,6 +6,9 @@ $auth = new \Delight\Auth\Auth($db);
 if (!$auth->isLoggedIn()) {
     header("location:/devalaya/auth/login.php");
 }
+else if (!$auth->hasAnyRole(\Delight\Auth\Role::SUPER_ADMIN, \Delight\Auth\Role::ADMIN)) {
+    header("location:/devalaya/home.php");
+}
 
 include('connection.php');
 $result = $con->query("select count(*) as 'total' from temple");
@@ -39,7 +42,7 @@ $sql = "SELECT
             t.name AS temple_name, 
             (SELECT COUNT(*) FROM favourite f WHERE f.temple_id = t.id) AS fav_count, 
             (SELECT COUNT(*) FROM reviews r WHERE r.temple_id = t.id) AS comments,
-            (SELECT SUM(rating) FROM reviews r WHERE r.temple_id = t.id) AS average_rating
+            (SELECT AVG(rating) FROM reviews r WHERE r.temple_id = t.id) AS average_rating
             -- (SELECT SUM(rating) FROM reviews r WHERE r.temple_id = t.id) AS total_rating
         FROM temple t";
 $data = [];
@@ -210,7 +213,7 @@ if ($res->num_rows > 0) {
                                     <td><?php echo $row["temple_name"]; ?></td>
                                     <td><?php echo $row["fav_count"]; ?></td>
                                     <td><?php echo $row["comments"]; ?></td>
-                                    <td><?php echo $row["average_rating"]; ?></td>
+                                    <td><?php echo number_format($row["average_rating"],2); ?></td>
 
                                 </tr>
                             <?php } ?>

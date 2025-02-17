@@ -440,7 +440,7 @@ border: 1px solid black;
 
 }
 .eventscard-body h5{
-  font-size: 1rem;
+  font-size: 1.2rem;
   margin-top: 1rem;
 }
 .eventscard-body h2{
@@ -452,6 +452,12 @@ border: 1px solid black;
 }
 .eventscard-body p{
   font-size: 1rem;
+ text-align: justify;
+ 
+}
+.eventscard-body h4{
+  font-size: 1rem;
+
 }
 
 .eventscard-body {

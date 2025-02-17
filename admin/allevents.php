@@ -19,7 +19,7 @@ $data=[];
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Dashboard</title>
+<title>Events</title>
 
 <!-- Custom fonts for this template-->
 <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -90,7 +90,7 @@ $data=[];
                                     <tr>
                                       <td><?php echo $i; ?></td>
                                       <td><?php echo $row["name"]; ?></td>
-                                      <td><?php echo $row["details"]; ?></td>
+                                      <td><?php echo substr($row["details"],0,350). "..."; ?></td>
                                       <td><?php echo $row["event_date"]; ?></td>
                                       <td><?php echo $row["contact"]; ?></td>
                                       <td><a href='editevents.php?id=<?php echo $row["id"]; ?>' class='btn-blue'>Edit</a></td>

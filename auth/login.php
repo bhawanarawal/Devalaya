@@ -11,7 +11,7 @@ if (isset($_POST['login'])) {
 
     try {
         $auth->login($_POST['email'], $_POST['password']);
-        if ($auth->hasRole(\Delight\Auth\Role::SUPER_ADMIN)) {
+        if ($auth->hasAnyRole(\Delight\Auth\Role::SUPER_ADMIN ,\Delight\Auth\Role::ADMIN )) {
             header("location:../admin/dashboard.php");
         } else {
             header("location:../home.php");
@@ -36,7 +36,7 @@ if (isset($_POST['login'])) {
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel</title>
+    <title>Login</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
