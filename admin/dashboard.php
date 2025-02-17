@@ -44,7 +44,7 @@ $sql = "SELECT
             (SELECT COUNT(*) FROM reviews r WHERE r.temple_id = t.id) AS comments,
             (SELECT AVG(rating) FROM reviews r WHERE r.temple_id = t.id) AS average_rating
             -- (SELECT SUM(rating) FROM reviews r WHERE r.temple_id = t.id) AS total_rating
-        FROM temple t";
+        FROM temple t limit 9";
 $data = [];
 $res = $con->query($sql);
 if ($res->num_rows > 0) {

@@ -1,4 +1,8 @@
-
+<?php
+require '../vendor/autoload.php';
+$db = new PDO('mysql:host=localhost;dbname=devalaya_db', 'root', '');
+$auth = new \Delight\Auth\Auth($db);
+?>
 <!-- Sidebar -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 

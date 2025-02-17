@@ -67,7 +67,7 @@ if ($res_all->num_rows > 0) {
         }
 
         .galleryimage img:hover {
-            transform: scale(1.05);
+            transform: scale(2.05);
         }
 
         .hidden {

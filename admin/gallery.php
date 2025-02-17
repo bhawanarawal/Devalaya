@@ -51,8 +51,13 @@ if ($res_all->num_rows > 0) {
     <style>
         .galleryimage img {
             width: 200px;
-            height: auto;
+            height: 200;
             margin: 10px;
+            border:2px solid black;
+            transition: transform 0.3s ease;
+        }
+        .galleryimage img:hover {
+            transform: scale(2.05);
         }
         .hidden {
             display: none;

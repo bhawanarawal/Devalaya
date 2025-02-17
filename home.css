@@ -431,13 +431,18 @@ border: 1px solid black;
   /* Each card takes 30% of the slider width */
   margin-right: 15px;
   /* Space between cards */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+  transition: transform 0.3s ease;
   border-radius: 8px;
   background: #fff;
   
   border: 1px solid black;
-  height: 300px;
+  height: 350px;
+  margin-bottom: 2rem;
 
+}
+.eventscard:hover{
+  transform: scale(1.05);
 }
 .eventscard-body h5{
   font-size: 1.2rem;
@@ -453,6 +458,9 @@ border: 1px solid black;
 .eventscard-body p{
   font-size: 1rem;
  text-align: justify;
+padding-left: 1rem;
+padding-right: 1rem;
+padding-top: 1rem;
  
 }
 .eventscard-body h4{
@@ -463,6 +471,7 @@ border: 1px solid black;
 .eventscard-body {
   padding: 2px;
   text-align: center;
+  
 }
 
 .prev-btn,
@@ -474,8 +483,8 @@ border: 1px solid black;
   color: white;
   border: none;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   cursor: pointer;
 }
 
