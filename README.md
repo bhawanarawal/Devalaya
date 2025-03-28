@@ -3,7 +3,9 @@
 # Snapshots
 ### Home Page
 ![Home Page](./screenshots/home.png)
+### Temple Sites
 ![Temple Sites](./screenshots/temples.png)
+### Galleries
 ![Galleries](./screenshots/galleries.png)
 ![Temple Details](./screenshots/temple_details.png)
 ![ratings & Reviews](./screenshots/ratings.png)
